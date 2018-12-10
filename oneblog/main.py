@@ -15,7 +15,7 @@ __author__ = 'Liangz'
 
 from flask import Flask
 import settings
-import urllib
+import urllib.request
 from werkzeug.routing import BaseConverter
 
 
@@ -48,20 +48,27 @@ class ListCoverter(BaseConverter):
 
     def __init__(self, url_map, separator='+'):
         super(ListCoverter, self).__init__(url_map)
-        self.separator = urllib.unquote(separator)
+        self.separator = urllib.request.unquote(separator)
 
     def to_python(self, value):
         return value.split(self.separator)
 
     def to_url(self, values):
-        return self.separator.join(BaseConverter.to_url(value) for value in values)
+        return self.separator.join(BaseConverter.to_url(value)
+                                   for value in values)
+
 
 app.url_map.converters['list']=ListCoverter
 
 
-@app.route('/list1/<list:page_name>')
+@app.route('/list1/<list:page_names>')
 def list1(page_names):
     return 'Separator:{}{}'.format('+', page_names)
+
+
+@app.route('/list2/<list(separator=u"|"):page_names>')
+def list2(page_names):
+    return 'Separator:{}{}'.format('|', page_names)
 
 
 if __name__ == '__main__':
