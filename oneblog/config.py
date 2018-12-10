@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 -------------------------------------------------
-   File Name：     settings
+   File Name：     config
    Description :
    Author :        Liangz
    Date：          2018/12/7
@@ -13,4 +13,10 @@
 __author__ = 'Liangz'
 
 
-DEBUG=True
+try:
+    from local_settings import *
+except ImportError:
+    pass
+
+
+DEBUG = True

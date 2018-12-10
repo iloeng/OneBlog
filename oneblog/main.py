@@ -13,8 +13,8 @@
 __author__ = 'Liangz'
 
 
-from flask import Flask
-import settings
+from flask import Flask, url_for
+import config
 import urllib.request
 from werkzeug.routing import BaseConverter
 
@@ -23,7 +23,7 @@ app = Flask(__name__)
 
 # 加载配置文件
 # app.config.from_object('settings')
-app.config.from_object(settings)
+app.config.from_object(config)
 
 
 @app.route('/')
@@ -58,7 +58,7 @@ class ListCoverter(BaseConverter):
                                    for value in values)
 
 
-app.url_map.converters['list']=ListCoverter
+app.url_map.converters['list'] = ListCoverter
 
 
 @app.route('/list1/<list:page_names>')
@@ -70,6 +70,27 @@ def list1(page_names):
 def list2(page_names):
     return 'Separator:{}{}'.format('|', page_names)
 
+
+@app.route('/projects/')
+def projects():
+    return "The Project Page"
+
+
+@app.route('/about')
+def about():
+    return 'The About Page'
+
+
+@app.route('/item/1/')
+def item1(id):
+    pass
+
+
+with app.test_request_context():
+    print(url_for('item1', id='1'))
+    print(url_for('item1', id=2, next='/'))
+    # /item/1/?id=1
+    # /item/1/?id=2&next=%2F
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
