@@ -1,0 +1,1 @@
+FLASK_APP=app.py:create_app
