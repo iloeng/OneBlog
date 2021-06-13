@@ -1,10 +1,466 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <link rel="dns-prefetch" href="//apps.bdimg.com">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-title" content="飘零博客">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
 
+    <title>飘零博客 | 一个关于技术与生活的家园</title>
+    <meta name="description" content="一个关于技术与生活的家园"/>
+    <link rel="canonical" href="http://www.liangz.org/"/>
+    <link rel="next" href="http://www.liangz.org/page/2"/>
+    <meta property="og:locale" content="zh_CN"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="飘零博客 | 一个关于技术与生活的家园"/>
+    <meta property="og:description" content="一个关于技术与生活的家园"/>
+    <meta property="og:url" content="http://www.liangz.org/"/>
+    <!-- / Yoast SEO plugin. -->
+
+    <link rel='dns-prefetch' href='//s.w.org'/>
+    <link rel='stylesheet' id='_bootstrap-css'
+          href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='_fontawesome-css'
+          href="{{ url_for('static', filename='css/font-awesome.min.css') }}" type='text/css'
+          media='all'/>
+    <link href="{{ url_for('static', filename='css/main.css') }}?ver=5.2" rel="stylesheet"
+          id="_main-css" type='text/css' media='all'>
+    <script type='text/javascript'
+            src="{{ url_for('static', filename='js/libs/jquery.min.js') }}"></script>
+    <link rel='https://api.w.org/' href='http://www.liangz.org/wp-json/'/>
+    <!-- Analytics by WP-Statistics v12.6.13 - https://wp-statistics.com/ -->
+    <meta name="keywords" content="一个关于技术与生活的家园">
+    <meta name="description" content="本站是一个高端大气上档次的网站">
+    <link rel="shortcut icon" href="http://www.liangz.org/favicon.ico">
+    <!--[if lt IE 9]>
+    <script src="http://www.liangz.org/wp-content/themes/dux/js/libs/html5.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        jQuery(document).ready(
+            function (jQuery) {
+                jQuery('.collapseButton').click(
+                    function () {
+                        jQuery(this).parent().parent().find('.xContent').slideToggle('slow');
+                    }
+                );
+            }
+        );
+    </script>
+</head>
+
+<body class="home blog logged-in nav_fixed m-excerpt-cat m-excerpt-time logged-admin site-layout-2 text-justify-on">
+
+{% include "header.html" %}
+
+
+<section class="container">
+    <div class="content-wrap">
+        <div class="content">
+            <div id="focusslide" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#focusslide" data-slide-to="0" class="active"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <a target="_blank" href="http://www.liangz.org">
+                            <img src="http://www.liangz.org/wp-content/uploads/2017/06/fe01735274.jpg" alt="唯美图片">
+                            <span class="carousel-caption">唯美图片</span>
+                        </a>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#focusslide" role="button"
+                   data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="right carousel-control" href="#focusslide" role="button"
+                   data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            <article class="excerpt-minic excerpt-minic-index">
+                <h2><a target="_blank" class="red" href="http://www.liangz.org/sort/recommend">【站长推荐】</a>
+                    <a href="http://www.liangz.org/424.html"
+                       title="神器&#8211;磁盘目录大小排序软件TreeSize-飘零博客">神器&#8211;磁盘目录大小排序软件TreeSize</a>
+                </h2>
+                <p class="note">TreeSize简介 硬盘空间回收器,它能够显示文件大小和实际占空间数及其浪费的空间等,让你做出相应的删除决定. 此乃神器
+                    就拿我而言，以网上之言，我已患有绝症。晚期收藏癌，晚期松鼠癌症（ps:松鼠喜欢收藏东西）。 收藏是需要Money的，...</p>
+            </article>
+            <!--自定义文章列表-->
+            <!-- 自定义文章列表模块 -->
+            <section>
+                <div class=title><h3>特别推荐</h3></div>
+                <div class="qgg_diy_postlist">
+                    <div style="list-style: none;">
+                        <li><span class="qgg_diy_postlist_lable">特别推荐</span>&nbsp&nbsp</li>
+                    </div>
+                </div>
+            </section>
+            <!--热门文章排行-->
+            <div class="most-comment-posts">
+                <div class="title"><h3>热门排行</h3></div>
+                <div class="mpc-bg">
+                    <ul>
+                        <li>暂无最多阅读文章！</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="title">
+                <h3>最新发布</h3>
+                <div class="more">
+                    <a href="http://www.liangz.org/75.html" target="_blank">Snipaste</a>
+                    <a href="http://www.liangz.org/248.html" target="_blank">Mem Reduct</a>
+                    <a href="http://www.liangz.org/288.html" target="_blank">Cmder</a>
+                    <a href="链接地址">显示文字</a>
+                </div>
+            </div>
+            {% for post in posts %}
+                <article class="excerpt excerpt-{{ loop.index }}">
+                    <a target="_blank" class="focus" href="http://www.liangz.org/{{ post.ID }}.html">
+                        <img data-src="{{ post.post_thumbnail }}"
+                             alt="{{ post.post_title }}-飘零博客"
+                             src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
+                             class="thumb">
+                    </a>
+                    <header>
+                        <a class="cat"
+                           href="http://www.liangz.org/sort/study/languages/delphi">Delphi<i></i></a>
+                        <h2>
+                            <a target="_blank" href="http://www.liangz.org/{{ post.ID }}.html"
+                               title="{{ post.post_title }}-飘零博客">{{ post.post_title }}
+                            </a>
+                        </h2>
+                    </header>
+                    <p class="meta">
+                        <time><i class="fa fa-clock-o"></i>{{ post.post_date.strftime("%Y-%m-%d") }}</time>
+                        <span class="author">
+                            <i class="fa fa-user"></i>
+                            <a href="http://www.liangz.org/author/{{ post.nicename }}">{{ post.article_author }}</a>
+                        </span>
+                        <span class="pv">
+                            <i class="fa fa-eye"></i>阅读({{ post.post_views }})
+                    </span>
+                        <a class="pc" href="http://www.liangz.org/755.html#respond">
+                            <i class="fa fa-comments-o"></i>评论({{ post.comment_count }})
+                        </a>
+                        <a href="javascript:;" etap="like" class="post-like" data-pid="{{ post.ID }}">
+                            <i class="fa fa-thumbs-o-up"></i>赞(<span>0</span>)
+                        </a>
+                    </p>
+                    <p class="note">序言
+                        {{ post.post_content | truncate(150) }}
+                        {#                        之前所说的获取文件MD5方法有性能问题，没多久我就遇到了，程序假死，卡顿。因此将获取文件MD5的方法改了一下，并测试了一下，大概性能提升了5倍，获取同一个文件的MD5，老方法用时是新方法的6倍。#}
+                        {#                        改进 原始获取文件MD5的方法： //...#}
+                    </p>
+                </article>
+            {% endfor %}
+
+            <div class="pagination">
+                <ul>
+                    <li class="prev-page"></li>
+                    <li class="active"><span>1</span></li>
+                    <li><a href='http://www.liangz.org/page/2'>2</a></li>
+                    <li><a href='http://www.liangz.org/page/3'>3</a></li>
+                    <li><a href='http://www.liangz.org/page/4'>4</a></li>
+                    <li><span> ... </span></li>
+                    <li class="next-page"><a href="http://www.liangz.org/page/2">下一页</a></li>
+                    <li><span>共 6 页</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="widget widget-tops">
+            <ul class="widget-nav">
+                <li class="active">网站公告</li>
+                <li>会员中心</li>
+            </ul>
+            <ul class="widget-navcontent">
+                <li class="item item-01 active">
+                    <ul>
+                        <li>
+                            <time>12-31</time>
+                            <a target="_blank" href="http://www.liangz.org/427.html">本站开启知识库</a>
+                        </li>
+                        <li>
+                            <time>10-30</time>
+                            <a target="_blank"
+                               href="http://www.liangz.org/333.html">关于本站为何使用城通网盘</a>
+                        </li>
+                        <li>
+                            <time>08-15</time>
+                            <a target="_blank" href="http://www.liangz.org/282.html">本站域名更换为www.liangz.org</a>
+                        </li>
+                        <li>
+                            <time>06-26</time>
+                            <a target="_blank"
+                               href="http://www.liangz.org/144.html">关于网站搜索bug的通知</a>
+                        </li>
+                        <li>
+                            <time>06-22</time>
+                            <a target="_blank" href="http://www.liangz.org/88.html">欢迎再次回来！！！</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="item item-02">
+                    <dl>
+                        <dt>
+                            <img src="https://secure.gravatar.com/avatar/ae89116bc2f881a5488ac50bf9b1f8ea?s=100&d=mm"
+                                 class="avatar avatar-100" height="50" width="50">
+                        </dt>
+                        <dd>Darker<span class="text-muted">1930812245@qq.com</span></dd>
+                    </dl>
+                    <ul>
+                        <li><a href="http://www.liangz.org/user#posts/all">我的文章</a></li>
+                        <li><a href="http://www.liangz.org/user#comments">我的评论</a></li>
+                        <li><a href="http://www.liangz.org/user#info">修改资料</a></li>
+                        <li><a href="http://www.liangz.org/user#password">修改密码</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="widget widget_ui_textasb">
+            <a class="style01" href="http://www.liangz.org/" target="_blank">
+                <strong>吐血推荐</strong>
+                <h2>欢迎光临</h2>
+                <p>本站是一个技术和生活的家园</p>
+            </a>
+        </div>
+        <div class="widget widget_text">
+            <h3>服务器推荐</h3>
+            <div class="textwidget">
+                <ul>
+                    <li>本站架设在
+                        <a href="https://bandwagonhost.com/aff.php?aff=21629" target="_blank"
+                           rel="noopener">
+                            <span style="color: #ff0000;">
+                                <strong>搬瓦工VPS</strong>（BandwagonHOST）
+                            </span>
+                        </a>上面
+                    </li>
+                    <li>最新优惠码：<strong>BWH26FXH3HIQ &#8211; 6.25%</strong></li>
+                </ul>
+            </div>
+        </div>
+        {% include "_hot-posts.html" %}
+
+        {% include "_recent-posts.html" %}
+
+        {% include "_like-posts.html" %}
+
+        {% include "_hot-tags.html" %}
+
+        {% include "_comments.html" %}
+
+        {% include "_categories.html" %}
+
+        {% include "_archive.html" %}
+
+        {% include "_statistics.html" %}
+
+    </div>
+</section>
+<div class="branding branding-black">
+    <div class="container">
+        <h2>欢迎光临</h2>
+    </div>
+</div>
+
+{% block footer %}
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2017-2020
+                <a href="http://www.liangz.org">飘零博客</a> &nbsp;
+                保留所有权利.&nbsp&nbsp&nbsp
+                <a href="http://www.liangz.org/sitemap_index.xml">网站地图</a>&nbsp&nbsp
+                <a href="mailto:Darker@liangz.org" target="_blank">联系我</a><br/><br/>
+                <a href="http://www.miitbeian.gov.cn/">豫ICP备17004059号-2</a>&nbsp&nbsp&nbsp
+                <a href="http://webscan.360.cn/index/checkwebsite/url/www.liangz.org"
+                   name="8a944173b40e4ac482e6322341f82110">360网站安全检测平台
+                </a><br/><br/>
+                <span id="sitetime"></span>
+                <script language=javascript>
+                    function siteTime() {
+                        window.setTimeout("siteTime()", 1000);
+                        var seconds = 1000
+                        var minutes = seconds * 60
+                        var hours = minutes * 60
+                        var days = hours * 24
+                        var years = days * 365
+                        var today = new Date()
+                        var todayYear = today.getFullYear()
+                        var todayMonth = today.getMonth()
+                        var todayDate = today.getDate()
+                        var todayHour = today.getHours()
+                        var todayMinute = today.getMinutes()
+                        var todaySecond = today.getSeconds()
+
+                        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+                        year - 作为date对象的年份，为4位年份值
+                        month - 0-11之间的整数，做为date对象的月份    特别注意
+                        day - 1-31之间的整数，做为date对象的天数
+                        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+                        minutes - 0-59之间的整数，做为date对象的分钟数
+                        seconds - 0-59之间的整数，做为date对象的秒数
+                        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+                        var t1 = Date.UTC(2017, 1, 14, 00, 00, 00);  <!--注意：月份是0-11,所以需要把建站月份减一-->
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+                        document.getElementById("sitetime").innerHTML = "本站安全运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        siteTime();
+                </script>
+            </p>
+            <span id="sitetime"></span>
+            <script language=javascript>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth();
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+
+                    /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+                    year - 作为date对象的年份，为4位年份值
+                    month - 0-11之间的整数，做为date对象的月份    特别注意
+                    day - 1-31之间的整数，做为date对象的天数
+                    hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+                    minutes - 0-59之间的整数，做为date对象的分钟数
+                    seconds - 0-59之间的整数，做为date对象的秒数
+                    microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+                    var t1 = Date.UTC(2017, 1, 14, 00, 00, 00);<!--注意：月份是0-11,所以需要把建站月份减一-->
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+                    document.getElementById("sitetime").innerHTML = "本站勉强运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                }
+
+                siteTime();
+            </script>
+            <br/><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>// <![CDATA[
+            var now = new Date();
+
+            function createtime() {
+                var grt = new Date("02/14/2017 00:00:00");//此处修改你的建站时间或者网站上线时间
+                now.setTime(now.getTime() + 250);
+                days = (now - grt) / 1000 / 60 / 60 / 24;
+                dnum = Math.floor(days);
+                hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                hnum = Math.floor(hours);
+                if (String(hnum).length == 1) {
+                    hnum = "0" + hnum;
+                }
+                minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                mnum = Math.floor(minutes);
+                if (String(mnum).length == 1) {
+                    mnum = "0" + mnum;
+                }
+                seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                snum = Math.round(seconds);
+                if (String(snum).length == 1) {
+                    snum = "0" + snum;
+                }
+                document.getElementById("timeDate").innerHTML = "本站始于2017年2月14日，勉强运行 " + dnum + " 天 ";
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+            }
+
+            setInterval("createtime()", 250);
+            // ]]></script>
+            <br/><br/>
+            <script type="text/javascript">
+                var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                document.write(unescape("%3Cspan id='cnzz_stat_icon_1263549358'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263549358%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+        </div>
+    </footer>
+
+{% endblock %}
+
+<div class="rollbar rollbar-rb">
+    <ul>
+        <li>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1930812245&site=qq&menu=yes">
+                <i class="fa fa-qq"></i>
+                <span>QQ咨询</span>
+            </a>
+            <h6>QQ咨询<i></i></h6>
+        </li>
+        <li class="rollbar-totop">
+            <a href="javascript:(jsui.scrollTo());">
+                <i class="fa fa-angle-up"></i>
+                <span>回顶</span>
+            </a>
+            <h6>回顶部<i></i></h6>
+        </li>
+    </ul>
+</div>
+<script>
+    window.jsui = {
+        www: 'http://www.liangz.org',
+        uri: '{{ url_for('static', filename="js/") }}',
+        ver: '5.2',
+        roll: ["1", "2"],
+        ajaxpager: '0',
+        url_rp: 'http://www.liangz.org/resetpwd'
+    };
+</script>
+
+<!-- 复制内容弹窗版权提醒 -->
+<script type="text/javascript">
+    document.body.oncopy = function () {
+        alert("复制成功！撰文不易，转载请务必保留原文链接，谢谢合作！");
+    }
+</script>
+
+<script type="text/javascript">
+    len = $(".widget_ui_tags .items a").length - 1;
+    $(".widget_ui_tags .items a").each(function (i) {
+        var let = new Array(
+            '27ea80', '3366FF', 'ff5473', 'df27ea', '31ac76', 'ea4563',
+            '31a6a0', '8e7daa', '4fad7b', 'f99f13', 'f85200', '666666');
+        var random1 = Math.floor(Math.random() * 12) + 0;
+        var num = Math.floor(Math.random() * 5 + 12);
+        $(this).attr('style', 'background:#' + let[random1] + '; opacity: 0.6;' + '');
+        if ($(this).next().length > 0) {
+            last = $(this).next().position().left
+        }
+    });
+</script>
+{#<!-- 评论框礼花绽放效果-->#}
+{#<script src="http://www.liangz.org/wp-content/themes/dux/diy/activate-power-mode.js "></script>#}
+{#<script>#}
+{#    POWERMODE.colorful = true; // ture 为启用礼花特效#}
+{#    POWERMODE.shake = false; // false 为禁用震动特效#}
+{#    document.body.addEventListener('input', POWERMODE);#}
+{#</script>#}
+
+<script type='text/javascript'
+        src="{{ url_for('static', filename='js/libs/bootstrap.min.js') }}"></script>
+<script type='text/javascript' src="{{ url_for('static', filename='js/loader.js') }}"></script>
+<script type='text/javascript'
+        src="{{ url_for('static', filename='js/wp-embed.min.js') }}"></script>
 </body>
 </html>

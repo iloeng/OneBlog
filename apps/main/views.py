@@ -11,12 +11,13 @@
 -------------------------------------------------------------------------------
 """
 from flask import render_template, request, current_app
-from apps.models import Post, User
+from apps.models import Post, User, Option
 from apps.main import main
 
 
 @main.route('/')
 def home():
+    header = {}
     page = request.args.get('page', 1, type=int)
     pagination = Post.query.filter_by(post_type='post').order_by(
         Post.post_date.desc()
@@ -25,13 +26,9 @@ def home():
         per_page=current_app.config['FLASK_POSTS_PER_PAGE'],
         error_out=False
     )
+    header['blogname'] = Option.query.filter_by(option_name="blogname").first().option_value
     posts = pagination.items
-    for i in posts:
-        print(i.post_title)
-        print(i.post_date)
-        print(i.post_thumbnail)
-        print(i.article_author)
-    return render_template('base.html', posts=posts)
+    return render_template('index.html', posts=posts, header=header)
 
 
 @main.route('/<id>')
