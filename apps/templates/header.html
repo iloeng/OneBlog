@@ -2,9 +2,9 @@
 <header class="header">
     <div class="container">
         <h1 class="logo">
-            <a href="http://www.liangz.org" title="飘零博客-一个关于技术与生活的家园">
+            <a href="{{ url_for('.home') }}" title="{{ header.blogname }} - {{ header.blogdesc }}">
                 <img src="http://medias.liangz.org/wp-content/uploads/2017/07/LOGO.png"
-                     alt="飘零博客-一个关于技术与生活的家园">飘零博客
+                     alt="{{ header.blogname }}-{{ header.blogdesc }}">{{ header.blogname }}
             </a>
         </h1>
         <div class="brand">欢迎光临！<br>若无相欠，怎会相见</div>

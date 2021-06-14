@@ -7,7 +7,7 @@
    @Author:   liangz.org@gmail.com
    @Create:   2020.08.02   12:09
 -------------------------------------------------------------------------------
-   @Change:   2020.08.02
+   @Change:   2021.06.14
 -------------------------------------------------------------------------------
 """
 from flask import render_template, request, current_app
@@ -26,7 +26,15 @@ def home():
         per_page=current_app.config['FLASK_POSTS_PER_PAGE'],
         error_out=False
     )
-    header['blogname'] = Option.query.filter_by(option_name="blogname").first().option_value
+
+    header['blogname'] = Option.query.filter_by(
+        option_name="blogname"
+    ).first().option_value
+
+    header['blogdesc'] = Option.query.filter_by(
+        option_name="blogdescription"
+    ).first().option_value
+
     posts = pagination.items
     return render_template('index.html', posts=posts, header=header)
 
@@ -38,3 +46,8 @@ def article(id):
         return render_template('article-detail.html', article=article)
     else:
         return '404'
+
+
+@main.route('/sort/<name>')
+def sort(name):
+    return

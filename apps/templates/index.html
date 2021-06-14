@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <link rel="dns-prefetch" href="//apps.bdimg.com">
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="apple-mobile-web-app-title" content="飘零博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+    user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-title" content="{{ header.blogname }}">
     <meta http-equiv="Cache-Control" content="no-siteapp">
 
-    <title>飘零博客 | 一个关于技术与生活的家园</title>
-    <meta name="description" content="一个关于技术与生活的家园"/>
+    <title>{{ header.blogname }} | {{ header.blogdesc }}</title>
+    <meta name="description" content="{{ header.blogdesc }}"/>
     <link rel="canonical" href="http://www.liangz.org/"/>
     <link rel="next" href="http://www.liangz.org/page/2"/>
     <meta property="og:locale" content="zh_CN"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:title" content="飘零博客 | 一个关于技术与生活的家园"/>
-    <meta property="og:description" content="一个关于技术与生活的家园"/>
+    <meta property="og:title" content="{{ header.blogname }} | {{ header.blogdesc }}"/>
+    <meta property="og:description" content="{{ header.blogdesc }}"/>
     <meta property="og:url" content="http://www.liangz.org/"/>
     <!-- / Yoast SEO plugin. -->
 
@@ -33,7 +33,7 @@
             src="{{ url_for('static', filename='js/libs/jquery.min.js') }}"></script>
     <link rel='https://api.w.org/' href='http://www.liangz.org/wp-json/'/>
     <!-- Analytics by WP-Statistics v12.6.13 - https://wp-statistics.com/ -->
-    <meta name="keywords" content="一个关于技术与生活的家园">
+    <meta name="keywords" content="{{ header.blogdesc }}">
     <meta name="description" content="本站是一个高端大气上档次的网站">
     <link rel="shortcut icon" href="http://www.liangz.org/favicon.ico">
     <!--[if lt IE 9]>
@@ -122,7 +122,7 @@
                 <article class="excerpt excerpt-{{ loop.index }}">
                     <a target="_blank" class="focus" href="http://www.liangz.org/{{ post.ID }}.html">
                         <img data-src="{{ post.post_thumbnail }}"
-                             alt="{{ post.post_title }}-飘零博客"
+                             alt="{{ post.post_title }}-{{ header.blogname }}"
                              src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
                              class="thumb">
                     </a>
@@ -131,7 +131,7 @@
                            href="http://www.liangz.org/sort/study/languages/delphi">Delphi<i></i></a>
                         <h2>
                             <a target="_blank" href="http://www.liangz.org/{{ post.ID }}.html"
-                               title="{{ post.post_title }}-飘零博客">{{ post.post_title }}
+                               title="{{ post.post_title }}-{{ header.blogname }}">{{ post.post_title }}
                             </a>
                         </h2>
                     </header>
@@ -227,7 +227,7 @@
             <a class="style01" href="http://www.liangz.org/" target="_blank">
                 <strong>吐血推荐</strong>
                 <h2>欢迎光临</h2>
-                <p>本站是一个技术和生活的家园</p>
+                <p>{{ header.blogdesc }}</p>
             </a>
         </div>
         <div class="widget widget_text">
