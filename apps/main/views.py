@@ -10,6 +10,8 @@
    @Change:   2021.06.14
 -------------------------------------------------------------------------------
 """
+import re
+
 from flask import render_template, request, current_app
 from apps.models import Post, User, Option
 from apps.main import main
@@ -17,7 +19,6 @@ from apps.main import main
 
 @main.route('/')
 def home():
-    header = {}
     page = request.args.get('page', 1, type=int)
     pagination = Post.query.filter_by(post_type='post').order_by(
         Post.post_date.desc()
@@ -26,7 +27,31 @@ def home():
         per_page=current_app.config['FLASK_POSTS_PER_PAGE'],
         error_out=False
     )
+    hot_posts = Post.query.filter_by(post_type='post').order_by(
+        Post.comment_count.desc()
+    ).all()[:6]
+    print(hot_posts)
+    header = common_info()
+    posts = pagination.items
+    return render_template('base.html', posts=posts, header=header)
 
+
+@main.route('/<id>')
+def article(id):
+    article = Post.query.get(id)
+    if article:
+        return render_template('post-detail.html', article=article)
+    else:
+        return '404'
+
+
+@main.route('/sort/<name>')
+def sort(name):
+    return
+
+
+def common_info():
+    header = dict()
     header['blogname'] = Option.query.filter_by(
         option_name="blogname"
     ).first().option_value
@@ -35,19 +60,11 @@ def home():
         option_name="blogdescription"
     ).first().option_value
 
-    posts = pagination.items
-    return render_template('index.html', posts=posts, header=header)
+    header['siteurl'] = Option.query.filter_by(
+        option_name="siteurl"
+    ).first().option_value
 
-
-@main.route('/<id>')
-def article(id):
-    article = Post.query.get(id)
-    if article:
-        return render_template('article-detail.html', article=article)
-    else:
-        return '404'
-
-
-@main.route('/sort/<name>')
-def sort(name):
-    return
+    header['home'] = Option.query.filter_by(
+        option_name="home"
+    ).first().option_value.rstrip('/')
+    return header

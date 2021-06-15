@@ -9,16 +9,18 @@
     <meta name="apple-mobile-web-app-title" content="{{ header.blogname }}">
     <meta http-equiv="Cache-Control" content="no-siteapp">
 
+    {% block title %}
     <title>{{ header.blogname }} | {{ header.blogdesc }}</title>
     <meta name="description" content="{{ header.blogdesc }}"/>
-    <link rel="canonical" href="http://www.liangz.org/"/>
+    <link rel="canonical" href="{{ header.home }}"/>
     <link rel="next" href="http://www.liangz.org/page/2"/>
     <meta property="og:locale" content="zh_CN"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="{{ header.blogname }} | {{ header.blogdesc }}"/>
     <meta property="og:description" content="{{ header.blogdesc }}"/>
-    <meta property="og:url" content="http://www.liangz.org/"/>
+    <meta property="og:url" content="{{ header.home }}"/>
     <!-- / Yoast SEO plugin. -->
+    {% endblock %}
 
     <link rel='dns-prefetch' href='//s.w.org'/>
     <link rel='stylesheet' id='_bootstrap-css'
@@ -31,13 +33,13 @@
           id="_main-css" type='text/css' media='all'>
     <script type='text/javascript'
             src="{{ url_for('static', filename='js/libs/jquery.min.js') }}"></script>
-    <link rel='https://api.w.org/' href='http://www.liangz.org/wp-json/'/>
+    <link rel='https://api.w.org/' href='{{ header.home }}/wp-json/'/>
     <!-- Analytics by WP-Statistics v12.6.13 - https://wp-statistics.com/ -->
     <meta name="keywords" content="{{ header.blogdesc }}">
     <meta name="description" content="本站是一个高端大气上档次的网站">
-    <link rel="shortcut icon" href="http://www.liangz.org/favicon.ico">
+    <link rel="shortcut icon" href="{{ header.home }}/favicon.ico">
     <!--[if lt IE 9]>
-    <script src="http://www.liangz.org/wp-content/themes/dux/js/libs/html5.min.js"></script>
+    <script src="{{ url_for('static', filename='js/libs/html5.min.js') }}"></script>
     <![endif]-->
 
     <script type="text/javascript">
@@ -67,7 +69,7 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <a target="_blank" href="http://www.liangz.org">
+                        <a target="_blank" href="{{ header.home }}">
                             <img src="http://www.liangz.org/wp-content/uploads/2017/06/fe01735274.jpg" alt="唯美图片">
                             <span class="carousel-caption">唯美图片</span>
                         </a>
@@ -151,10 +153,8 @@
                             <i class="fa fa-thumbs-o-up"></i>赞(<span>0</span>)
                         </a>
                     </p>
-                    <p class="note">序言
-                        {{ post.post_content | truncate(150) }}
-                        {#                        之前所说的获取文件MD5方法有性能问题，没多久我就遇到了，程序假死，卡顿。因此将获取文件MD5的方法改了一下，并测试了一下，大概性能提升了5倍，获取同一个文件的MD5，老方法用时是新方法的6倍。#}
-                        {#                        改进 原始获取文件MD5的方法： //...#}
+                    <p class="note">
+                        {{ post.post_content | summary | truncate(180) }}
                     </p>
                 </article>
             {% endfor %}
@@ -246,21 +246,8 @@
                 </ul>
             </div>
         </div>
-        {% include "_hot-posts.html" %}
 
-        {% include "_recent-posts.html" %}
-
-        {% include "_like-posts.html" %}
-
-        {% include "_hot-tags.html" %}
-
-        {% include "_comments.html" %}
-
-        {% include "_categories.html" %}
-
-        {% include "_archive.html" %}
-
-        {% include "_statistics.html" %}
+        {% include "side.html" %}
 
     </div>
 </section>
@@ -275,7 +262,7 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2017-2020
-                <a href="http://www.liangz.org">飘零博客</a> &nbsp;
+                <a href="{{ header.home }}">飘零博客</a> &nbsp;
                 保留所有权利.&nbsp&nbsp&nbsp
                 <a href="http://www.liangz.org/sitemap_index.xml">网站地图</a>&nbsp&nbsp
                 <a href="mailto:Darker@liangz.org" target="_blank">联系我</a><br/><br/>

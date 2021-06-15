@@ -31,4 +31,4 @@ class AdminHomeView(ModelView):
 
     @expose('/')
     def index(self):
-        return self.render('admin/index.html')
+        return self.render('admin/base.html')

@@ -1,0 +1,343 @@
+{% extends 'base.html' %}
+<head>
+
+    {% block title %}
+    <!-- This site is optimized with the Yoast SEO plugin v7.9 - https://yoast.com/wordpress/plugins/seo/ -->
+    <title>Delphi-改进获取文件MD5 Hash方法 | 飘零博客</title>
+    <!-- 通知（仅管理员）：此页不显示元描述，因为没有指定。请填写元描述或进入[SEO - 搜索外观]，并设置一个模板。 -->
+    <link rel="canonical" href="http://www.liangz.org/755.html" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Delphi-改进获取文件MD5 Hash方法 | 飘零博客" />
+    <meta property="og:description" content="序言 之前所说的获取文件MD5方法有性能问题，没多久我就遇到了，程序假死，卡顿。因此将获取文件MD5的方法改了一下，并测试了一下，大概性能提升了5倍，获取同一个文件的MD5，老方法用时是新方法的6倍。 改进 原始获取文件MD5的方法： // &hellip;" />
+    <meta property="og:url" content="http://www.liangz.org/755.html" />
+    <meta property="og:site_name" content="飘零博客" />
+    <meta property="article:tag" content="Delphi" />
+    <meta property="article:tag" content="Hash" />
+    <meta property="article:section" content="Delphi" />
+    <meta property="article:published_time" content="2020-07-26T00:27:50+08:00" />
+    <meta property="og:image" content="http://medias.liangz.org/wp-content/uploads/2020/07/s-20200726-002246.png" />
+    <meta property="og:image:width" content="551" />
+    <meta property="og:image:height" content="205" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="序言 之前所说的获取文件MD5方法有性能问题，没多久我就遇到了，程序假死，卡顿。因此将获取文件MD5的方法改了一下，并测试了一下，大概性能提升了5倍，获取同一个文件的MD5，老方法用时是新方法的6倍。 改进 原始获取文件MD5的方法： // [&hellip;]" />
+    <meta name="twitter:title" content="Delphi-改进获取文件MD5 Hash方法 | 飘零博客" />
+    <meta name="twitter:image" content="http://medias.liangz.org/wp-content/uploads/2020/05/delphi.png" />
+    <script type='application/ld+json'>{"@context":"https:\/\/schema.org","@type":"Person","url":"http:\/\/www.liangz.org\/","sameAs":[],"@id":"#person","name":"Darker"}</script>
+    <!-- / Yoast SEO plugin. -->
+    <meta name="keywords" content="Delphi, Hash, Delphi">
+    <meta name="description" content="序言 之前所说的获取文件MD5方法有性能问题，没多久我就遇到了，程序假死，卡顿。因此将获取文件MD5的方法改了一下，并测试了一下，大概性能提升了5倍，获取同一个文件的MD5，老方法用时是新方法的6倍。 改进 原始获取文件MD5的方法： // uses IdHashMessageDigest Function StreamToMD5(s: TFileStream): string; var   MD">
+    {% endblock %}
+
+</head>
+<body class="post-template-default single single-post postid-755 single-format-standard logged-in nav_fixed m-excerpt-cat m-excerpt-time p_indent comment-open logged-admin site-layout-2 text-justify-on">
+
+{% include 'header.html' %}
+
+<div class="site-search">
+    <div class="container">
+        <form method="get" class="site-search-form" action="http://www.liangz.org/" >
+            <input class="search-input" name="s" type="text" placeholder="输入关键字" value="">
+            <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
+
+<div class="breadcrumbs">
+    <div class="container">当前位置：
+        <a href="http://www.liangz.org">飘零博客</a> <small>></small>
+        <a href="http://www.liangz.org/sort/study">学无止境</a> <small>></small>
+        <a href="http://www.liangz.org/sort/study/languages">编程语言</a> <small>></small>
+        <a href="http://www.liangz.org/sort/study/languages/delphi">Delphi</a> <small>></small> 正文
+    </div>
+</div>
+
+<section class="container">
+    <div class="content-wrap">
+        <div class="content">
+            <header class="article-header">
+                <h1 class="article-title">
+                    <a href="{{ url_for('main.home') }}{{ article.ID }}">{{ article.post_title }}</a>
+                </h1>
+                <div class="article-meta">
+                    <span class="item">{{ article.post_date.strftime("%Y-%m-%d") }}</span>
+                    <span class="item">分类：
+                        <a href="http://www.liangz.org/sort/study/languages/delphi" rel="category tag">Delphi</a>
+                    </span>
+                    <span class="item post-views">阅读(39)</span>
+                    <span class="item">评论({{ article.comment_count }})</span>
+                    <span class="item">
+                        <a class="post-edit-link" href="http://www.liangz.org/wp-admin/post.php?post=755&#038;action=edit">[编辑]</a>
+                    </span>
+                </div>
+            </header>
+            <article class="article-content">
+                {#                {% autoescape true %}#}
+                {{ article.post_content | safe }}
+                {#                {% endautoescape %}#}
+
+            </article>
+            <div class="post-actions">
+                <a href="javascript:;" etap="like" class="post-like action action-like" data-pid="755">
+                    <i class="fa fa-thumbs-o-up"></i>赞(<span>0</span>)
+                </a>
+                <a href="javascript:;" class="action action-rewards" data-event="rewards">
+                    <i class="fa fa-jpy"></i> 打赏
+                </a>
+            </div>
+            <div class="post-copyright">转载请注明：
+                <a href="http://www.liangz.org">飘零博客</a> &raquo;
+                <a href="http://www.liangz.org/755.html">Delphi-改进获取文件MD5 Hash方法</a>
+            </div>
+            <div class="action-share">
+                <div class="bdsharebuttonbox">
+                    <span>分享到：</span>
+                    <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                    <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                    <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                    <a class="bds_bdhome" data-cmd="bdhome" title="分享到百度新首页"></a>
+                    <a class="bds_tqf" data-cmd="tqf" title="分享到腾讯朋友"></a>
+                    <a class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a>
+                    <a class="bds_more" data-cmd="more">更多</a>
+                    <span>(</span>
+                    <a class="bds_count" data-cmd="count" title="累计分享0次">0</a>
+                    <span>)</span>
+                </div>
+                <script>
+                    window._bd_share_config = {
+                        common: {
+                            "bdText"     : "",
+                            "bdMini"     : "2",
+                            "bdMiniList" : false,
+                            "bdPic"      : "",
+                            "bdStyle"    : "0",
+                            "bdSize"     : "24"
+                        },
+                        share: [{
+                            bdCustomStyle: "http://www.oldbird.top/wp-content/themes/dux/css/share.css"
+                        }]
+                    }
+                    with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion="+~(-new Date()/36e5)];
+                </script>
+            </div>
+
+            <div class="article-tags">标签：
+                <a href="http://www.liangz.org/tags/delphi" rel="tag">Delphi</a>
+                <a href="http://www.liangz.org/tags/hash" rel="tag">Hash</a>
+            </div>
+
+            <div class="article-author">
+                <img data-src="https://secure.gravatar.com/avatar/ae89116bc2f881a5488ac50bf9b1f8ea?s=100&d=mm"
+                     class="avatar avatar-100" height="50" width="50">
+                <h4>
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <a title="查看更多文章" href="http://www.liangz.org/author/deteriorator">Darker</a>
+                </h4>
+                佛系站长
+            </div>
+
+            <nav class="article-nav">
+                <span class="article-nav-prev">上一篇<br>
+                    <a href="http://www.liangz.org/728.html" rel="prev">使用 Gitea 搭建私有 Git 服务器</a>
+                </span>
+                <span class="article-nav-next"></span>
+            </nav>
+
+            <div class="relates">
+                <div class="title">
+                    <h3>相关推荐</h3>
+                </div>
+                <ul>
+                    <li>
+                        &nbsp&nbsp&nbsp
+                        <i class="fa fa-hand-o-right"></i>&nbsp&nbsp
+                        <a href="http://www.liangz.org/721.html">Delphi-解决数据库Text字段显示为(WIDEMEMO)</a>
+                    </li>
+                    <li>
+                        &nbsp&nbsp&nbsp
+                        <i class="fa fa-hand-o-right"></i>&nbsp&nbsp
+                        <a href="http://www.liangz.org/716.html">Delphi-获取文件日期、文件大小和绝对路径</a>
+                    </li>
+                    <li>
+                        &nbsp&nbsp&nbsp
+                        <i class="fa fa-hand-o-right"></i>&nbsp&nbsp
+                        <a href="http://www.liangz.org/712.html">Delphi-获取文件MD5 Hash值</a>
+                    </li>
+                    <li>
+                        &nbsp&nbsp&nbsp
+                        <i class="fa fa-hand-o-right"></i>&nbsp&nbsp
+                        <a href="http://www.liangz.org/710.html">Delphi-获取字符串的MD5 Hash值</a>
+                    </li>
+                    <li>
+                        &nbsp&nbsp&nbsp
+                        <i class="fa fa-hand-o-right"></i>&nbsp&nbsp
+                        <a href="http://www.liangz.org/707.html">Delphi-创建SQLite数据库</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="title" id="comments">
+                <h3>评论 <small>抢沙发</small></h3>
+            </div>
+            <div id="respond" class="no_webshot">
+                <form action="http://www.liangz.org/wp-comments-post.php" method="post" id="commentform">
+                    <div class="comt">
+                        <div class="comt-title">
+                            <img data-src="https://secure.gravatar.com/avatar/ae89116bc2f881a5488ac50bf9b1f8ea?s=100&d=mm"
+                                 class="avatar avatar-100" height="50" width="50">
+                            <p>Darker</p>
+                            <p><a id="cancel-comment-reply-link" href="javascript:;">取消</a></p>
+                        </div>
+                        <div class="comt-box">
+                            <textarea placeholder="你的评论可以一针见血" class="input-block-level comt-area"
+                                      name="comment" id="comment" cols="100%" rows="3" tabindex="1"
+                                      onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){
+                                          document.getElementById('submit').click();return false};">
+                            </textarea>
+                            <div class="comt-ctrl">
+                                <div class="comt-tips">
+                                    <input type='hidden' name='comment_post_ID' value='755' id='comment_post_ID' />
+                                    <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                                    <p style="display: none;">
+                                        <input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="3581ec3e07" />
+                                    </p>
+                                    <input type="hidden" id="_wp_unfiltered_html_comment_disabled"
+                                           name="_wp_unfiltered_html_comment_disabled" value="762c7ac539" />
+                                    <script>
+                                        (function(){if(window===window.parent){
+                                            document.getElementById('_wp_unfiltered_html_comment_disabled').name='_wp_unfiltered_html_comment';}})();
+                                    </script>
+                                    <label for="comment_mail_notify" class="checkbox inline hide" style="padding-top:0">
+                                        <input type="checkbox" name="comment_mail_notify"
+                                               id="comment_mail_notify" value="comment_mail_notify" checked="checked"/>有人回复时邮件通知我
+                                    </label>
+                                    <p style="display: none;">
+                                        <input type="hidden" id="ak_js" name="ak_js" value="77"/>
+                                    </p>
+                                </div>
+                                <button type="submit" name="submit" id="submit" tabindex="5">提交评论</button>
+                                <!-- <span data-type="comment-insert-smilie" class="muted comt-smilie"><i class="icon-thumbs-up icon12"></i> 表情</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="widget widget_ui_textasb">
+            <a class="style01" href="http://www.liangz.org/" target="_blank">
+                <strong>吐血推荐</strong>
+                <h2>欢迎光临</h2>
+                <p>本站是一个技术和生活的家园</p>
+            </a>
+        </div>
+        <div class="widget widget_text">
+            <h3>服务器推荐</h3>
+            <div class="textwidget">
+                <ul>
+                    <li>本站架设在
+                        <a href="https://bandwagonhost.com/aff.php?aff=21629" target="_blank" rel="noopener">
+                            <span style="color: #ff0000;">
+                                <strong>搬瓦工VPS</strong>（BandwagonHOST）
+                            </span>
+                        </a>上面
+                    </li>
+                    <li>最新优惠码：<strong>BWH26FXH3HIQ &#8211; 6.25%</strong></li>
+                </ul>
+            </div>
+        </div>
+        {% include "_hot-posts.html" %}
+        {% include "_recent-posts.html" %}
+        {% include "_like-posts.html" %}
+        {% include "_hot-tags.html" %}
+        {% include "_categories.html" %}
+        {% include "_archive.html" %}
+        {% include "_statistics.html" %}
+    </div>
+</section>
+
+<div class="branding branding-black">
+    <div class="container">
+        <h2>欢迎光临</h2>
+    </div>
+</div>
+
+{% include "footer.html" %}
+
+
+<div class="rollbar rollbar-rb"><ul><li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1930812245&site=qq&menu=yes"><i class="fa fa-qq"></i><span>QQ咨询</span></a><h6>QQ咨询<i></i></h6></li><li class="rollbar-totop"><a href="javascript:(jsui.scrollTo());"><i class="fa fa-angle-up"></i><span>回顶</span></a><h6>回顶部<i></i></h6></li></ul></div>
+<script>
+    window.jsui={
+        www: 'http://www.liangz.org',
+        uri: 'http://www.liangz.org/wp-content/themes/dux',
+        ver: '5.2',
+        roll: ["1","2"],
+        ajaxpager: '0',
+        url_rp: 'http://www.liangz.org/resetpwd'
+    };
+</script>
+
+<!-- 复制内容弹窗版权提醒 -->
+<script type="text/javascript">
+    document.body.oncopy=function(){alert("复制成功！撰文不易，转载请务必保留原文链接，谢谢合作！");}
+</script>
+
+<script type="text/javascript">
+    len = $(".widget_ui_tags .items a").length - 1;
+    $(".widget_ui_tags .items a").each(function(i) {
+        var let = new Array( '27ea80','3366FF','ff5473','df27ea', '31ac76', 'ea4563', '31a6a0', '8e7daa', '4fad7b', 'f99f13', 'f85200', '666666');
+        var random1 = Math.floor(Math.random() * 12) + 0;
+        var num = Math.floor(Math.random() * 5 + 12);
+        $(this).attr('style', 'background:#' + let[random1] + '; opacity: 0.6;'+'');
+        if ($(this).next().length > 0) {
+            last = $(this).next().position().left
+        }
+    });
+</script>
+
+<link rel="stylesheet" href="http://www.liangz.org/wp-content/themes/dux/highslide/highslide.css" type="text/css" />
+<script type="text/javascript" src="http://www.liangz.org/wp-content/themes/dux/highslide/highslide.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        hs.graphicsDir = "http://www.liangz.org/wp-content/themes/dux/highslide/graphics/";
+        hs.outlineType = "rounded-white";
+        hs.dimmingOpacity = 0.8;
+        hs.outlineWhileAnimating = true;
+        hs.showCredits = false;
+        hs.captionEval = "this.thumb.alt";
+        hs.numberPosition = "caption";
+        hs.align = "center";
+        hs.transitions = ["expand", "crossfade"];
+        hs.addSlideshow({
+            interval: 5000,
+            repeat: true,
+            useControls: true,
+            fixedControls: "fit",
+            overlayOptions: {
+                opacity: 0.75,
+                position: "bottom center",
+                hideOnMouseOut: true
+
+            }
+
+        });
+    });
+</script>
+
+
+<!-- 评论框礼花绽放效果-->
+<script src="http://www.liangz.org/wp-content/themes/dux/diy/activate-power-mode.js "></script>
+<script>
+    POWERMODE.colorful = true; // ture 为启用礼花特效
+    POWERMODE.shake = false; // false 为禁用震动特效
+    document.body.addEventListener('input', POWERMODE);
+</script>
+
+<script type='text/javascript' src='http://www.liangz.org/wp-content/themes/dux/js/libs/bootstrap.min.js?ver=5.2'></script>
+<script type='text/javascript' src='http://www.liangz.org/wp-content/themes/dux/js/loader.js?ver=5.2'></script>
+<script type='text/javascript' src='http://www.liangz.org/wp-content/plugins/ank-prism-for-wp/out/prism-js.min.js?ver=1514043996'></script>
+<script type='text/javascript' src='http://www.liangz.org/wp-includes/js/wp-embed.min.js?ver=4.9.10'></script>
+<script async="async" type='text/javascript' src='http://www.liangz.org/wp-content/plugins/akismet/_inc/form.js?ver=4.1.2'></script>
+</body>
