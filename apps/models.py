@@ -417,7 +417,16 @@ class Post(db.Model):
             _thumbnail_id = PostMeta.query.filter_by(
                 post_id=self.ID, meta_key='_thumbnail_id'
             ).first()
-            return Post.query.get(_thumbnail_id.meta_value).guid
+            thumbnail = Post.query.filter_by(post_parent=self.ID).order_by(
+                Post.post_date.asc()
+            ).all()
+            if _thumbnail_id:
+                return Post.query.get(_thumbnail_id.meta_value).guid
+            elif thumbnail:
+                print(thumbnail)
+                return Post.query.get(thumbnail[0].ID).guid
+            else:
+                return
 
     @property
     def post_views(self):

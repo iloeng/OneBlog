@@ -1,84 +1,21 @@
 <div class="widget widget_ui_posts">
     <h3>热门文章</h3>
     <ul>
-        <li>
-            <a target="_blank" href="http://www.liangz.org/75.html">
+        {% for hot_post in hot_posts %}
+            <li>
+                <a target="_blank" href="{{ url_for(".article", id=hot_post.ID) }}">
                 <span class="thumbnail">
-                    <img data-src="http://ww2.sinaimg.cn/large/840a8430jw1f68mbo23png20qv0higz2.jpg"
-                         alt="Snipaste--“全球第一多功能截图软件”-飘零博客"
+                    <img data-src="{{ hot_post.post_thumbnail }}"
+                         alt="{{ hot_post.post_title }}-飘零博客"
                          src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
                          class="thumb">
                 </span>
-                <span class="text">Snipaste&#8211;“全球第一多功能截图软件”</span>
-                <span class="muted">2017-06-22</span>
-                <span class="muted">评论(10)</span>
-            </a>
-        </li>
-        <li>
-            <a target="_blank" href="http://www.liangz.org/142.html">
-                        <span class="thumbnail">
-                            <img data-src="http://media.oldbird.top/wp-content/uploads/2017/06/1.png"
-                                 alt="简易处理简单的U盘病毒教程-飘零博客"
-                                 src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
-                                 class="thumb">
-                        </span>
-                <span class="text">简易处理简单的U盘病毒教程</span>
-                <span class="muted">2017-06-26</span>
-                <span class="muted">评论(9)</span>
-            </a>
-        </li>
-        <li>
-            <a target="_blank" href="http://www.liangz.org/424.html">
-                        <span class="thumbnail">
-                            <img data-src="http://medias.liangz.org/wp-content/uploads/2017/12/s-20171214-230314.png"
-                                 alt="神器--磁盘目录大小排序软件TreeSize-飘零博客"
-                                 src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
-                                 class="thumb">
-                        </span>
-                <span class="text">神器&#8211;磁盘目录大小排序软件TreeSize</span>
-                <span class="muted">2017-12-14</span>
-                <span class="muted">评论(6)</span>
-            </a>
-        </li>
-        <li>
-            <a target="_blank" href="http://www.liangz.org/331.html">
-                        <span class="thumbnail">
-                            <img data-src="http://medias.liangz.org/wp-content/uploads/2017/10/sp_20171029_233702.png"
-                                 alt="知识管理工具-Mybase-飘零博客"
-                                 src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
-                                 class="thumb">
-                        </span>
-                <span class="text">知识管理工具-Mybase</span>
-                <span class="muted">2017-10-30</span>
-                <span class="muted">评论(3)</span>
-            </a>
-        </li>
-        <li>
-            <a target="_blank" href="http://www.liangz.org/245.html">
-                        <span class="thumbnail">
-                            <img data-src="http://medias.liangz.org/wp-content/uploads/2017/06/sp_20170629_194616.png"
-                                 alt="网站运行时间代码两例-飘零博客"
-                                 src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
-                                 class="thumb">
-                        </span>
-                <span class="text">网站运行时间代码两例</span>
-                <span class="muted">2017-07-10</span>
-                <span class="muted">评论(3)</span>
-            </a>
-        </li>
-        <li>
-            <a target="_blank" href="http://www.liangz.org/307.html">
-                        <span class="thumbnail">
-                            <img data-src="http://medias.liangz.org/wp-content/uploads/2017/07/snipaste20170628_233551.png"
-                                 alt="Python学习之基础练习（1）-飘零博客"
-                                 src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
-                                 class="thumb">
-                        </span>
-                <span class="text">Python学习之基础练习（1）</span>
-                <span class="muted">2017-09-03</span>
-                <span class="muted">评论(3)</span>
-            </a>
-        </li>
+                    <span class="text">{{ hot_post.post_title }}</span>
+                    <span class="muted">{{ hot_post.post_date.strftime("%Y-%m-%d") }}</span>
+                    <span class="muted">评论({{ hot_post.comment_count }})</span>
+                </a>
+            </li>
+        {% endfor %}
     </ul>
 </div>
 

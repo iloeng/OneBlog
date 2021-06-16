@@ -30,18 +30,26 @@ def home():
     hot_posts = Post.query.filter_by(post_type='post').order_by(
         Post.comment_count.desc()
     ).all()[:6]
-    print(hot_posts)
+
     header = common_info()
     posts = pagination.items
-    return render_template('base.html', posts=posts, header=header)
+    return render_template(
+        'base.html', posts=posts, header=header, hot_posts=hot_posts
+    )
 
 
 @main.route('/<id>')
 def article(id):
     article = Post.query.get(id)
     header = common_info()
+    hot_posts = Post.query.filter_by(post_type='post').order_by(
+        Post.comment_count.desc()
+    ).all()[:6]
     if article:
-        return render_template('post-detail.html', article=article, header=header)
+        return render_template(
+            'post-detail.html', article=article, header=header,
+            hot_posts=hot_posts
+        )
     else:
         return '404'
 
