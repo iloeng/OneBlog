@@ -39,8 +39,9 @@ def home():
 @main.route('/<id>')
 def article(id):
     article = Post.query.get(id)
+    header = common_info()
     if article:
-        return render_template('post-detail.html', article=article)
+        return render_template('post-detail.html', article=article, header=header)
     else:
         return '404'
 
