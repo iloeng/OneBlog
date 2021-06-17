@@ -15,6 +15,7 @@ import re
 from flask import render_template, request, current_app
 from apps.models import Post, User, Option
 from apps.main import main
+from apps.main import assistant
 
 
 @main.route('/')
@@ -27,28 +28,27 @@ def home():
         per_page=current_app.config['FLASK_POSTS_PER_PAGE'],
         error_out=False
     )
-    hot_posts = Post.query.filter_by(post_type='post').order_by(
-        Post.comment_count.desc()
-    ).all()[:6]
+    hot_posts = assistant.host_posts()
+    recent_posts = assistant.recent_posts()
 
-    header = common_info()
+    header = assistant.common_info()
     posts = pagination.items
     return render_template(
-        'base.html', posts=posts, header=header, hot_posts=hot_posts
+        'base.html', posts=posts, header=header, hot_posts=hot_posts,
+        recent_posts=recent_posts
     )
 
 
 @main.route('/<id>')
 def article(id):
     article = Post.query.get(id)
-    header = common_info()
-    hot_posts = Post.query.filter_by(post_type='post').order_by(
-        Post.comment_count.desc()
-    ).all()[:6]
+    header = assistant.common_info()
+    hot_posts = assistant.host_posts()
+    recent_posts = assistant.recent_posts()
     if article:
         return render_template(
             'post-detail.html', article=article, header=header,
-            hot_posts=hot_posts
+            hot_posts=hot_posts, recent_posts=recent_posts
         )
     else:
         return '404'
@@ -57,23 +57,3 @@ def article(id):
 @main.route('/sort/<name>')
 def sort(name):
     return
-
-
-def common_info():
-    header = dict()
-    header['blogname'] = Option.query.filter_by(
-        option_name="blogname"
-    ).first().option_value
-
-    header['blogdesc'] = Option.query.filter_by(
-        option_name="blogdescription"
-    ).first().option_value
-
-    header['siteurl'] = Option.query.filter_by(
-        option_name="siteurl"
-    ).first().option_value
-
-    header['home'] = Option.query.filter_by(
-        option_name="home"
-    ).first().option_value.rstrip('/')
-    return header

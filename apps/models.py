@@ -423,7 +423,6 @@ class Post(db.Model):
             if _thumbnail_id:
                 return Post.query.get(_thumbnail_id.meta_value).guid
             elif thumbnail:
-                print(thumbnail)
                 return Post.query.get(thumbnail[0].ID).guid
             else:
                 return

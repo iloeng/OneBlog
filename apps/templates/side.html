@@ -6,7 +6,7 @@
                 <a target="_blank" href="{{ url_for(".article", id=hot_post.ID) }}">
                 <span class="thumbnail">
                     <img data-src="{{ hot_post.post_thumbnail }}"
-                         alt="{{ hot_post.post_title }}-飘零博客"
+                         alt="{{ hot_post.post_title }}-{{ header.blogname }}"
                          src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
                          class="thumb">
                 </span>
@@ -23,84 +23,21 @@
 <div class="widget widget_ui_posts">
     <h3>近期文章</h3>
     <ul>
-        <li>
-            <a target="_blank" href="http://www.liangz.org/755.html">
-                        <span class="thumbnail">
-                            <img data-src="http://medias.liangz.org/wp-content/uploads/2020/05/delphi.png"
-                                 alt="Delphi-改进获取文件MD5 Hash方法-飘零博客"
-                                 src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
-                                 class="thumb">
-                        </span>
-                <span class="text">Delphi-改进获取文件MD5 Hash方法</span>
-                <span class="muted">2020-07-26</span>
-                <span class="muted">评论(0)</span>
-            </a>
-        </li>
-        <li>
-            <a target="_blank" href="http://www.liangz.org/728.html">
-                        <span class="thumbnail">
-                            <img data-src="http://medias.liangz.org/wp-content/uploads/2020/07/s-20200709-224008.png"
-                                 alt="使用 Gitea 搭建私有 Git 服务器-飘零博客"
-                                 src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
-                                 class="thumb">
-                        </span>
-                <span class="text">使用 Gitea 搭建私有 Git 服务器</span>
-                <span class="muted">2020-07-09</span>
-                <span class="muted">评论(0)</span>
-            </a>
-        </li>
-        <li>
-            <a target="_blank" href="http://www.liangz.org/721.html">
-                        <span class="thumbnail">
-                            <img data-src="http://medias.liangz.org/wp-content/uploads/2020/05/delphi.png"
-                                 alt="Delphi-解决数据库Text字段显示为(WIDEMEMO)-飘零博客"
-                                 src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
-                                 class="thumb">
-                        </span>
-                <span class="text">Delphi-解决数据库Text字段显示为(WIDEMEMO)</span>
-                <span class="muted">2020-06-14</span>
-                <span class="muted">评论(0)</span>
-            </a>
-        </li>
-        <li>
-            <a target="_blank" href="http://www.liangz.org/716.html">
-                        <span class="thumbnail">
-                            <img data-src="http://medias.liangz.org/wp-content/uploads/2020/05/delphi.png"
-                                 alt="Delphi-获取文件日期、文件大小和绝对路径-飘零博客"
-                                 src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
-                                 class="thumb">
-                        </span>
-                <span class="text">Delphi-获取文件日期、文件大小和绝对路径</span>
-                <span class="muted">2020-06-07</span>
-                <span class="muted">评论(0)</span>
-            </a>
-        </li>
-        <li>
-            <a target="_blank" href="http://www.liangz.org/712.html">
-                        <span class="thumbnail">
-                            <img data-src="http://medias.liangz.org/wp-content/uploads/2020/05/delphi.png"
-                                 alt="Delphi-获取文件MD5 Hash值-飘零博客"
-                                 src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
-                                 class="thumb">
-                        </span>
-                <span class="text">Delphi-获取文件MD5 Hash值</span>
-                <span class="muted">2020-06-06</span>
-                <span class="muted">评论(0)</span>
-            </a>
-        </li>
-        <li>
-            <a target="_blank" href="http://www.liangz.org/710.html">
-                        <span class="thumbnail">
-                            <img data-src="http://medias.liangz.org/wp-content/uploads/2020/05/delphi.png"
-                                 alt="Delphi-获取字符串的MD5 Hash值-飘零博客"
-                                 src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
-                                 class="thumb">
-                        </span>
-                <span class="text">Delphi-获取字符串的MD5 Hash值</span>
-                <span class="muted">2020-05-31</span>
-                <span class="muted">评论(0)</span>
-            </a>
-        </li>
+        {% for post in recent_posts %}
+            <li>
+                <a target="_blank" href="{{ url_for('.article', id=post.ID) }}">
+                    <span class="thumbnail">
+                        <img data-src="{{ post.post_thumbnail }}"
+                             alt="{{ post.post_title }}-{{ header.blogname }}"
+                             src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
+                             class="thumb">
+                    </span>
+                    <span class="text">{{ post.post_title }}</span>
+                    <span class="muted">{{ post.post_date.strftime("%Y-%m-%d") }}</span>
+                    <span class="muted">评论({{ post.comment_count }})</span>
+                </a>
+            </li>
+        {% endfor %}
     </ul>
 </div>
 
