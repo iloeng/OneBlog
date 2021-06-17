@@ -11,6 +11,8 @@
 -------------------------------------------------------------------------------
 """
 
+import random
+
 from apps.models import Post, User, Option
 
 
@@ -44,3 +46,10 @@ def recent_posts():
     return Post.query.filter_by(post_type='post').order_by(
         Post.post_date.desc()
     ).all()[:6]
+
+
+def guess_like():
+    """ randomly selected from all the articles """
+    all = Post.query.filter_by(post_type='post').all()
+    return random.sample(all, 6)
+
