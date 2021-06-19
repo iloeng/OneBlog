@@ -13,7 +13,7 @@
 
 import random
 
-from apps.models import Post, User, Option
+from apps.models import Post, User, Option, TermTaxonomy, Term
 
 
 def common_info():
@@ -53,3 +53,13 @@ def guess_like():
     all = Post.query.filter_by(post_type='post').all()
     return random.sample(all, 6)
 
+
+def hot_tags():
+    """ get the top 30 tags """
+    tags = list()
+    tag_ids = TermTaxonomy.query.filter_by(taxonomy='post_tag').order_by(
+        TermTaxonomy.count.desc()
+    )[:30]
+    for i in tag_ids:
+        tags.append(Term.query.get(i.term_id))
+    return tags

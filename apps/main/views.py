@@ -31,12 +31,13 @@ def home():
     hot_posts = assistant.host_posts()
     recent_posts = assistant.recent_posts()
     guess_likes = assistant.guess_like()
+    hot_tags = assistant.hot_tags()
 
     header = assistant.common_info()
     posts = pagination.items
     return render_template(
         'base.html', posts=posts, header=header, hot_posts=hot_posts,
-        recent_posts=recent_posts, guess_likes=guess_likes
+        recent_posts=recent_posts, guess_likes=guess_likes, hot_tags=hot_tags
     )
 
 
@@ -47,10 +48,12 @@ def article(id):
     hot_posts = assistant.host_posts()
     recent_posts = assistant.recent_posts()
     guess_likes = assistant.guess_like()
+    hot_tags = assistant.hot_tags()
     if article:
         return render_template(
             'post-detail.html', article=article, header=header,
-            hot_posts=hot_posts, recent_posts=recent_posts, guess_likes=guess_likes
+            hot_posts=hot_posts, recent_posts=recent_posts,
+            guess_likes=guess_likes, hot_tags=hot_tags
         )
     else:
         return '404'

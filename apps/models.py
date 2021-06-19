@@ -579,6 +579,10 @@ class Term(db.Model):
         server_default=db.FetchedValue()
     )
 
+    @property
+    def count(self):
+        return TermTaxonomy.query.get(self.term_id).count
+
 
 class UserMeta(db.Model):
 
