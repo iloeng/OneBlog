@@ -63,3 +63,13 @@ def hot_tags():
     for i in tag_ids:
         tags.append(Term.query.get(i.term_id))
     return tags
+
+
+def all_categories():
+    """ get all categories """
+    all_category = list()
+    categories = TermTaxonomy.query.filter_by(taxonomy='category').all()
+    for category in categories:
+        all_category.append(Term.query.get(category.term_id))
+    all_category = sorted(all_category, key=lambda x: x.name, reverse=False)
+    return all_category

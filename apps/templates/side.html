@@ -140,89 +140,11 @@
 <div class="widget widget_categories">
     <h3>分类目录</h3>
     <ul>
-        <li class="cat-item cat-item-92">
-            <a href="http://www.liangz.org/sort/study/algorithms">Algorithms</a> (3)
-        </li>
-        <li class="cat-item cat-item-101">
-            <a href="http://www.liangz.org/sort/study/assembly">Assembly</a> (5)
-        </li>
-        <li class="cat-item cat-item-105">
-            <a href="http://www.liangz.org/sort/study/c-c">C/C++</a> (3)
-        </li>
-        <li class="cat-item cat-item-97">
-            <a href="http://www.liangz.org/sort/reverse/crackme">CrackMe</a> (1)
-        </li>
-        <li class="cat-item cat-item-116">
-            <a href="http://www.liangz.org/sort/study/languages/delphi">Delphi</a> (5)
-        </li>
-        <li class="cat-item cat-item-98">
-            <a
-                    href="http://www.liangz.org/sort/reverse/disassembly">Disassembly</a>
-            (7)
-        </li>
-        <li class="cat-item cat-item-109">
-            <a href="http://www.liangz.org/sort/study/django">Django</a> (1)
-        </li>
-        <li class="cat-item cat-item-90">
-            <a href="http://www.liangz.org/sort/resource/ebook">Ebook</a> (3)
-        </li>
-        <li class="cat-item cat-item-60">
-            <a href="http://www.liangz.org/sort/study/linux">Linux</a>
-            (12)
-        </li>
-        <li class="cat-item cat-item-43">
-            <a href="http://www.liangz.org/sort/study/languages/php">PHP</a> (2)
-        </li>
-        <li class="cat-item cat-item-39">
-            <a href="http://www.liangz.org/sort/study/languages/python">Python</a> (31)
-        </li>
-        <li class="cat-item cat-item-44">
-            <a href="http://www.liangz.org/sort/study/windows">Windows</a> (11)
-        </li>
-        <li class="cat-item cat-item-48">
-            <a href="http://www.liangz.org/sort/study/wordpress">WordPress</a> (5)
-        </li>
-        <li class="cat-item cat-item-23">
-            <a href="http://www.liangz.org/sort/study">学无止境</a> (12)
-        </li>
-        <li class="cat-item cat-item-113">
-            <a href="http://www.liangz.org/sort/study/%e5%af%86%e7%a0%81%e5%ad%a6">密码学</a>
-            (2)
-        </li>
-        <li class="cat-item cat-item-18">
-            <a href="http://www.liangz.org/sort/resource/documents">文档分享</a> (4)
-        </li>
-        <li class="cat-item cat-item-4">
-            <a href="http://www.liangz.org/sort/recommend">站长推荐</a> (6)
-        </li>
-        <li class="cat-item cat-item-28">
-            <a href="http://www.liangz.org/sort/study/languages">编程语言</a> (3)
-        </li>
-        <li class="cat-item cat-item-1">
-            <a href="http://www.liangz.org/sort/notice">网站公告</a> (5)
-        </li>
-        <li class="cat-item cat-item-106">
-            <a href="http://www.liangz.org/sort/resource/%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88">解决方案</a>
-            (6)
-        </li>
-        <li class="cat-item cat-item-5">
-            <a href="http://www.liangz.org/sort/everthing">谈天说地</a> (8)
-        </li>
-        <li class="cat-item cat-item-6">
-            <a href="http://www.liangz.org/sort/resource">资源分享</a> (3)
-        </li>
-        <li class="cat-item cat-item-7">
-            <a href="http://www.liangz.org/sort/resource/software">软件分享</a> (6)
-        </li>
-        <li class="cat-item cat-item-96">
-            <a href="http://www.liangz.org/sort/reverse">逆向工程</a> (2)
-        </li>
-        <li class="cat-item cat-item-12">
-            <a href="http://www.liangz.org/sort/everthing/essaylog">随笔日志</a> (17)
-        </li>
-        <li class="cat-item cat-item-67">
-            <a href="http://www.liangz.org/sort/study/hack">黑客技术</a> (2)
-        </li>
+        {% for category in all_categories %}
+            <li class="cat-item cat-item-{{ category.term_id }}">
+                <a href="http://www.liangz.org/sort/study/{{ category.slug }}">{{ category.name }}</a> ({{ category.count }})
+            </li>
+        {% endfor %}
     </ul>
 </div>
 
