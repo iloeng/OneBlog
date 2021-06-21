@@ -33,13 +33,14 @@ def home():
     guess_likes = assistant.guess_like()
     hot_tags = assistant.hot_tags()
     all_categories = assistant.all_categories()
+    post_statistics = assistant.post_statistics()
 
     header = assistant.common_info()
     posts = pagination.items
     return render_template(
         'base.html', posts=posts, header=header, hot_posts=hot_posts,
         recent_posts=recent_posts, guess_likes=guess_likes, hot_tags=hot_tags,
-        all_categories=all_categories
+        all_categories=all_categories, post_statistics=post_statistics
     )
 
 

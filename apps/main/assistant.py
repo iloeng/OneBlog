@@ -13,7 +13,7 @@
 
 import random
 
-from apps.models import Post, User, Option, TermTaxonomy, Term
+from apps.models import Post, User, Option, TermTaxonomy, Term, Comment
 
 
 def common_info():
@@ -73,3 +73,16 @@ def all_categories():
         all_category.append(Term.query.get(category.term_id))
     all_category = sorted(all_category, key=lambda x: x.name, reverse=False)
     return all_category
+
+
+def post_statistics():
+    """ get the data of posts """
+    post_statistic = dict()
+    post_statistic['total_posts'] = len(Post.query.filter_by(post_type='post').all())
+    post_statistic['total_comments'] = len(Comment.query.filter_by(user_id=0).all())
+    post_statistic['total_pages'] = len(Post.query.filter_by(post_type='page').all())
+    post_statistic['latest'] = Post.query.filter_by(post_type='post').order_by(
+        Post.post_date.desc()
+    )[0].post_date
+    print(post_statistic)
+    return post_statistic

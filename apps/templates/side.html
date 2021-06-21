@@ -195,10 +195,10 @@
 <div class="widget widget_ui_statistics">
     <h3>站点统计</h3>
     <ul>
-        <li><strong>日志总数：</strong>125</li>
-        <li><strong>评论总数：</strong>68</li>
-        <li><strong>页面总数：</strong>13</li>
-        <li><strong>最后更新：</strong>2020-07-26</li>
+        <li><strong>日志总数：</strong>{{ post_statistics.total_posts }}</li>
+        <li><strong>评论总数：</strong>{{ post_statistics.total_comments }}</li>
+        <li><strong>页面总数：</strong>{{ post_statistics.total_pages }}</li>
+        <li><strong>最后更新：</strong>{{ post_statistics.latest.strftime("%Y-%m-%d") }}</li>
     </ul>
 </div>
 
