@@ -36,7 +36,7 @@ def common_info():
     return header
 
 
-def host_posts():
+def hot_posts():
     return Post.query.filter_by(post_type='post').order_by(
         Post.comment_count.desc()
     ).all()[:6]
@@ -84,5 +84,4 @@ def post_statistics():
     post_statistic['latest'] = Post.query.filter_by(post_type='post').order_by(
         Post.post_date.desc()
     )[0].post_date
-    print(post_statistic)
     return post_statistic

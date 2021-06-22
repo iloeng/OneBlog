@@ -28,7 +28,7 @@ def home():
         per_page=current_app.config['FLASK_POSTS_PER_PAGE'],
         error_out=False
     )
-    hot_posts = assistant.host_posts()
+    hot_posts = assistant.hot_posts()
     recent_posts = assistant.recent_posts()
     guess_likes = assistant.guess_like()
     hot_tags = assistant.hot_tags()
@@ -48,15 +48,18 @@ def home():
 def article(id):
     article = Post.query.get(id)
     header = assistant.common_info()
-    hot_posts = assistant.host_posts()
+    hot_posts = assistant.hot_posts()
     recent_posts = assistant.recent_posts()
     guess_likes = assistant.guess_like()
     hot_tags = assistant.hot_tags()
+    all_categories = assistant.all_categories()
+    post_statistics = assistant.post_statistics()
     if article:
         return render_template(
             'post-detail.html', article=article, header=header,
             hot_posts=hot_posts, recent_posts=recent_posts,
-            guess_likes=guess_likes, hot_tags=hot_tags
+            guess_likes=guess_likes, hot_tags=hot_tags,
+            all_categories=all_categories, post_statistics=post_statistics
         )
     else:
         return '404'
