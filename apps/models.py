@@ -446,6 +446,15 @@ class Post(db.Model):
         """ get post author's real name """
         return User.query.get(self.post_author).user_nicename
 
+    @property
+    def post_like(self):
+        """ return how many people like this post """
+        like = PostMeta.query.filter_by(post_id=self.ID, meta_key='like').first()
+        if like:
+            return like.meta_value
+        else:
+            return 0
+
 
 class TermRelationship(db.Model):
 
