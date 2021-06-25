@@ -13,7 +13,9 @@
 
 import random
 
-from apps.models import Post, User, Option, TermTaxonomy, Term, Comment
+from apps.models import (
+    Post, User, Option, TermTaxonomy, Term, Comment, TermRelationship
+)
 
 
 def common_info():
@@ -85,3 +87,13 @@ def post_statistics():
         Post.post_date.desc()
     )[0].post_date
     return post_statistic
+
+
+def site_notifications():
+    """ get latest 5 notifications of site """
+    res = list()
+    term_id = Term.query.filter_by(name='网站公告').first().term_id
+    target_posts = TermRelationship.query.filter_by(term_taxonomy_id=term_id).all()
+    for target in target_posts:
+        res.append(Post.query.get(target.object_id))
+    return res[::-1]

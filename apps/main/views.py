@@ -34,13 +34,15 @@ def home():
     hot_tags = assistant.hot_tags()
     all_categories = assistant.all_categories()
     post_statistics = assistant.post_statistics()
+    site_notifications = assistant.site_notifications()
 
     header = assistant.common_info()
     posts = pagination.items
     return render_template(
         'base.html', posts=posts, header=header, hot_posts=hot_posts,
         recent_posts=recent_posts, guess_likes=guess_likes, hot_tags=hot_tags,
-        all_categories=all_categories, post_statistics=post_statistics
+        all_categories=all_categories, post_statistics=post_statistics,
+        site_notifications=site_notifications
     )
 
 
@@ -54,12 +56,14 @@ def article(id):
     hot_tags = assistant.hot_tags()
     all_categories = assistant.all_categories()
     post_statistics = assistant.post_statistics()
+    site_notifications = assistant.site_notifications()
     if article:
         return render_template(
             'post-detail.html', article=article, header=header,
             hot_posts=hot_posts, recent_posts=recent_posts,
             guess_likes=guess_likes, hot_tags=hot_tags,
-            all_categories=all_categories, post_statistics=post_statistics
+            all_categories=all_categories, post_statistics=post_statistics,
+            site_notifications=site_notifications
         )
     else:
         return '404'
