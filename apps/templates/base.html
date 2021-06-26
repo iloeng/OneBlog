@@ -33,7 +33,6 @@
           id="_main-css" type='text/css' media='all'>
     <script type='text/javascript'
             src="{{ url_for('static', filename='js/libs/jquery.min.js') }}"></script>
-    <link rel='https://api.w.org/' href='{{ header.home }}/wp-json/'/>
     <!-- Analytics by WP-Statistics v12.6.13 - https://wp-statistics.com/ -->
     <meta name="keywords" content="{{ header.blogdesc }}">
     <meta name="description" content="本站是一个高端大气上档次的网站">
@@ -86,8 +85,8 @@
                 </a>
             </div>
             <article class="excerpt-minic excerpt-minic-index">
-                <h2><a target="_blank" class="red" href="http://www.liangz.org/sort/recommend">【站长推荐】</a>
-                    <a href="http://www.liangz.org/424.html"
+                <h2><a target="_blank" class="red" href="{{ url_for('.category', name='recommend') }}">【站长推荐】</a>
+                    <a href="{{ url_for('.article', id='424') }}.html"
                        title="神器&#8211;磁盘目录大小排序软件TreeSize-飘零博客">神器&#8211;磁盘目录大小排序软件TreeSize</a>
                 </h2>
                 <p class="note">TreeSize简介 硬盘空间回收器,它能够显示文件大小和实际占空间数及其浪费的空间等,让你做出相应的删除决定. 此乃神器
@@ -115,15 +114,15 @@
             <div class="title">
                 <h3>最新发布</h3>
                 <div class="more">
-                    <a href="http://www.liangz.org/75.html" target="_blank">Snipaste</a>
-                    <a href="http://www.liangz.org/248.html" target="_blank">Mem Reduct</a>
-                    <a href="http://www.liangz.org/288.html" target="_blank">Cmder</a>
-                    <a href="链接地址">显示文字</a>
+                    <a href="{{ url_for('.article', id='75') }}.html" target="_blank">Snipaste</a>
+                    <a href="{{ url_for('.article', id='248') }}.html" target="_blank">Mem Reduct</a>
+                    <a href="{{ url_for('.article', id='288') }}.html" target="_blank">Cmder</a>
+                    <a href="">显示文字</a>
                 </div>
             </div>
             {% for post in posts %}
                 <article class="excerpt excerpt-{{ loop.index }}">
-                    <a target="_blank" class="focus" href="http://www.liangz.org/{{ post.ID }}.html">
+                    <a target="_blank" class="focus" href="{{ url_for('.article', id=post.ID) }}.html">
                         <img data-src="{{ post.post_thumbnail }}"
                              alt="{{ post.post_title }}-{{ header.blogname }}"
                              src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
@@ -133,7 +132,7 @@
                         <a class="cat"
                            href="http://www.liangz.org/sort/study/languages/delphi">Delphi<i></i></a>
                         <h2>
-                            <a target="_blank" href="http://www.liangz.org/{{ post.ID }}.html"
+                            <a target="_blank" href="{{ url_for('.article', id=post.ID) }}.html"
                                title="{{ post.post_title }}-{{ header.blogname }}">{{ post.post_title }}
                             </a>
                         </h2>
@@ -142,12 +141,12 @@
                         <time><i class="fa fa-clock-o"></i>{{ post.post_date.strftime("%Y-%m-%d") }}</time>
                         <span class="author">
                             <i class="fa fa-user"></i>
-                            <a href="http://www.liangz.org/author/{{ post.nicename }}">{{ post.article_author }}</a>
+                            <a href="{{ url_for('.author', user_name=post.nicename) }}">{{ post.article_author }}</a>
                         </span>
                         <span class="pv">
                             <i class="fa fa-eye"></i>阅读({{ post.post_views }})
                     </span>
-                        <a class="pc" href="http://www.liangz.org/755.html#respond">
+                        <a class="pc" href="{{ url_for('.article', id=post.ID) }}.html#respond">
                             <i class="fa fa-comments-o"></i>评论({{ post.comment_count }})
                         </a>
                         <a href="javascript:;" etap="like" class="post-like" data-pid="{{ post.ID }}">
@@ -186,7 +185,7 @@
                         {% for post in site_notifications %}
                             <li>
                                 <time>{{ post.post_date.strftime("%m-%d") }}</time>
-                                <a target="_blank" href="/{{ post.ID }}.html">{{ post.post_title }}</a>
+                                <a target="_blank" href="{{ url_for('.article', id=post.ID) }}.html">{{ post.post_title }}</a>
                             </li>
                         {% endfor %}
                     </ul>

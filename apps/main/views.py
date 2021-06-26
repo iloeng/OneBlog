@@ -69,6 +69,16 @@ def article(id):
         return '404'
 
 
-@main.route('/sort/<name>')
-def sort(name):
+@main.route('/category/<name>')
+def category(name):
+    return
+
+
+@main.route('/tag/<tag_name>')
+def tag(tag_name):
+    return
+
+
+@main.route('author/<user_name>')
+def author(user_name):
     return
