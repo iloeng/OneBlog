@@ -82,3 +82,25 @@ def tag(tag_name):
 @main.route('author/<user_name>')
 def author(user_name):
     return
+
+
+@main.route('/hot-tags')
+def hot_tags():
+    return
+
+
+@main.route('/friend-link')
+def friend_link():
+    return
+
+
+@main.route('/changelog')
+def changelog():
+    return
+
+
+@main.route('/about')
+def about():
+    return
+
+

@@ -3,7 +3,7 @@
     <div class="container">
         <h1 class="logo">
             <a href="{{ url_for('.home') }}" title="{{ header.blogname }} - {{ header.blogdesc }}">
-                <img src="http://medias.liangz.org/wp-content/uploads/2017/07/LOGO.png"
+                <img src="{{ url_for('static', filename='img/LOGO.png') }}"
                      alt="{{ header.blogname }}-{{ header.blogdesc }}">{{ header.blogname }}
             </a>
         </h1>
@@ -15,7 +15,7 @@
             </li>
             <li id="menu-item-117"
                 class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-117">
-                <a href="http://www.liangz.org/sort/study">学无止境</a>
+                <a href="{{ url_for('.category', name='study') }}">学无止境</a>
                 <ul class="sub-menu">
                     <li id="menu-item-557" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-557">
                         <a href="http://www.liangz.org/sort/study/windows">Windows</a>
@@ -36,7 +36,7 @@
             </li>
             <li id="menu-item-73"
                 class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-73">
-                <a href="http://www.liangz.org/sort/resource">资源分享</a>
+                <a href="{{ url_for('.category', name='resource') }}">资源分享</a>
                 <ul class="sub-menu">
                     <li id="menu-item-87" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-87">
                         <a href="http://www.liangz.org/sort/resource/software">软件分享</a>
@@ -47,7 +47,7 @@
                 </ul>
             </li>
             <li id="menu-item-66" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-66">
-                <a href="http://www.liangz.org/sort/everthing">谈天说地</a>
+                <a href="{{ url_for('.category', name='everthing') }}">谈天说地</a>
                 <ul class="sub-menu">
                     <li id="menu-item-86" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-86">
                         <a href="http://www.liangz.org/sort/everthing/essaylog">随笔日志</a>
@@ -84,16 +84,16 @@
                     <a>知识库</a>
                 </li>
                 <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
-                    <a href="http://www.liangz.org/hottags">热门标签</a>
+                    <a href="{{ url_for('.hot_tags') }}">热门标签</a>
                 </li>
                 <li id="menu-item-59" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59">
-                    <a href="http://www.liangz.org/friendlinks">友情链接</a>
+                    <a href="{{ url_for('.friend_link') }}">友情链接</a>
                 </li>
                 <li id="menu-item-61" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61">
-                    <a href="http://www.liangz.org/changelog">更新记录</a>
+                    <a href="{{ url_for('.changelog') }}">更新记录</a>
                 </li>
                 <li id="menu-item-62" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-62">
-                    <a href="http://www.liangz.org/about">关于本站</a>
+                    <a href="{{ url_for('.about') }}">关于本站</a>
                 </li>
                 <li class="menusns">
                     <a href="javascript:;">关注我们 <i class="fa fa-angle-down"></i></a>

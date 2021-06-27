@@ -125,7 +125,7 @@
                     <a target="_blank" class="focus" href="{{ url_for('.article', id=post.ID) }}.html">
                         <img data-src="{{ post.post_thumbnail }}"
                              alt="{{ post.post_title }}-{{ header.blogname }}"
-                             src="http://www.liangz.org/wp-content/themes/dux/img/thumbnail.png"
+                             src="{{ url_for('static', filename='img/thumbnail.png') }}"
                              class="thumb">
                     </a>
                     <header>
