@@ -8,46 +8,13 @@
             <a href="http://www.miitbeian.gov.cn/">豫ICP备17004059号-2</a>&nbsp&nbsp&nbsp
             <a href="http://webscan.360.cn/index/checkwebsite/url/www.liangz.org"
                name="8a944173b40e4ac482e6322341f82110">360网站安全检测平台
-            </a><br/><br/>
+            </a>
+            <br/><br/>
             <span id="sitetime"></span>
-            <script language=javascript>
-                function siteTime() {
-                    window.setTimeout("siteTime()", 1000);
-                    var seconds = 1000
-                    var minutes = seconds * 60
-                    var hours = minutes * 60
-                    var days = hours * 24
-                    var years = days * 365
-                    var today = new Date()
-                    var todayYear = today.getFullYear()
-                    var todayMonth = today.getMonth()
-                    var todayDate = today.getDate()
-                    var todayHour = today.getHours()
-                    var todayMinute = today.getMinutes()
-                    var todaySecond = today.getSeconds()
-
-                    /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
-                    year - 作为date对象的年份，为4位年份值
-                    month - 0-11之间的整数，做为date对象的月份    特别注意
-                    day - 1-31之间的整数，做为date对象的天数
-                    hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
-                    minutes - 0-59之间的整数，做为date对象的分钟数
-                    seconds - 0-59之间的整数，做为date对象的秒数
-                    microseconds - 0-999之间的整数，做为date对象的毫秒数 */
-                    var t1 = Date.UTC(2017, 1, 14, 00, 00, 00);  <!--注意：月份是0-11,所以需要把建站月份减一-->
-                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                    var diff = t2 - t1;
-                    var diffYears = Math.floor(diff / years);
-                    var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
-                    document.getElementById("sitetime").innerHTML = "本站安全运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    siteTime();
-            </script>
         </p>
-        <span id="sitetime"></span>
-        <script language=javascript>
+        <br/>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script type="text/javascript">
             function siteTime() {
                 window.setTimeout("siteTime()", 1000);
                 var seconds = 1000;
@@ -71,54 +38,43 @@
                 minutes - 0-59之间的整数，做为date对象的分钟数
                 seconds - 0-59之间的整数，做为date对象的秒数
                 microseconds - 0-999之间的整数，做为date对象的毫秒数 */
-                var t1 = Date.UTC(2017, 1, 14, 00, 00, 00);<!--注意：月份是0-11,所以需要把建站月份减一-->
+                var t1 = Date.UTC(2017, 1, 14, 0, 0, 0);<!--注意：月份是0-11,所以需要把建站月份减一-->
                 var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
                 var diff = t2 - t1;
 
                 var diffYears = Math.floor(diff / years);
                 var diffDays = Math.floor((diff / days) - diffYears * 365);
                 var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                if (String(diffHours).length === 1) {
+                    diffHours = "0" + diffHours;
+                }
                 var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+                if (String(diffMinutes).length === 1) {
+                    diffMinutes = "0" + diffMinutes;
+                }
                 var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+                if (String(diffSeconds).length === 1) {
+                    diffSeconds = "0" + diffSeconds;
+                }
                 document.getElementById("sitetime").innerHTML = "本站勉强运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-            }
 
+                var Days = Math.floor(diff / days);
+                var Hours = Math.floor((diff -  Days * days) / hours);
+                if (String(Hours).length === 1) {
+                    Hours = "0" + Hours;
+                }
+                var Minutes = Math.floor((diff -  Days * days - Hours * hours) / minutes);
+                if (String(Minutes).length === 1) {
+                    Minutes = "0" + Minutes;
+                }
+                var Seconds = Math.floor((diff -  Days * days - Hours * hours - Minutes * minutes) / seconds);
+                if (String(Seconds).length === 1) {
+                    Seconds = "0" + Seconds;
+                }
+                document.getElementById("timeDate").innerHTML = "本站始于2017年2月14日，勉强运行 " + Days + " 天 ";
+                document.getElementById("times").innerHTML = Hours + " 小时 " + Minutes + " 分 " + Seconds + " 秒";
+            }
             siteTime();
-        </script>
-        <br/><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-        <script>// <![CDATA[
-        var now = new Date();
-
-        function createtime() {
-            var grt = new Date("02/14/2017 00:00:00");//此处修改你的建站时间或者网站上线时间
-            now.setTime(now.getTime() + 250);
-            days = (now - grt) / 1000 / 60 / 60 / 24;
-            dnum = Math.floor(days);
-            hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
-            hnum = Math.floor(hours);
-            if (String(hnum).length == 1) {
-                hnum = "0" + hnum;
-            }
-            minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
-            mnum = Math.floor(minutes);
-            if (String(mnum).length == 1) {
-                mnum = "0" + mnum;
-            }
-            seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-            snum = Math.round(seconds);
-            if (String(snum).length == 1) {
-                snum = "0" + snum;
-            }
-            document.getElementById("timeDate").innerHTML = "本站始于2017年2月14日，勉强运行 " + dnum + " 天 ";
-            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
-        }
-
-        setInterval("createtime()", 250);
-        // ]]></script>
-        <br/><br/>
-        <script type="text/javascript">
-            var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-            document.write(unescape("%3Cspan id='cnzz_stat_icon_1263549358'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263549358%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
         </script>
     </div>
 </footer>

@@ -79,7 +79,7 @@ def tag(tag_name):
     return
 
 
-@main.route('author/<user_name>')
+@main.route('/author/<user_name>')
 def author(user_name):
     return
 
