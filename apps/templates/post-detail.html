@@ -3,14 +3,14 @@
 
     {% block title %}
     <!-- This site is optimized with the Yoast SEO plugin v7.9 - https://yoast.com/wordpress/plugins/seo/ -->
-    <title>Delphi-改进获取文件MD5 Hash方法 | 飘零博客</title>
+    <title>{{ article.post_title }} | 飘零博客</title>
     <!-- 通知（仅管理员）：此页不显示元描述，因为没有指定。请填写元描述或进入[SEO - 搜索外观]，并设置一个模板。 -->
-    <link rel="canonical" href="http://www.liangz.org/755.html" />
+    <link rel="canonical" href="{{ url_for('.article', id=article.ID) }}" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Delphi-改进获取文件MD5 Hash方法 | 飘零博客" />
+    <meta property="og:title" content="{{ article.post_title }} | 飘零博客" />
     <meta property="og:description" content="序言 之前所说的获取文件MD5方法有性能问题，没多久我就遇到了，程序假死，卡顿。因此将获取文件MD5的方法改了一下，并测试了一下，大概性能提升了5倍，获取同一个文件的MD5，老方法用时是新方法的6倍。 改进 原始获取文件MD5的方法： // &hellip;" />
-    <meta property="og:url" content="http://www.liangz.org/755.html" />
+    <meta property="og:url" content="{{ url_for('.article', id=article.ID) }}" />
     <meta property="og:site_name" content="飘零博客" />
     <meta property="article:tag" content="Delphi" />
     <meta property="article:tag" content="Hash" />
@@ -21,7 +21,7 @@
     <meta property="og:image:height" content="205" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:description" content="序言 之前所说的获取文件MD5方法有性能问题，没多久我就遇到了，程序假死，卡顿。因此将获取文件MD5的方法改了一下，并测试了一下，大概性能提升了5倍，获取同一个文件的MD5，老方法用时是新方法的6倍。 改进 原始获取文件MD5的方法： // [&hellip;]" />
-    <meta name="twitter:title" content="Delphi-改进获取文件MD5 Hash方法 | 飘零博客" />
+    <meta name="twitter:title" content="{{ article.post_title }} | 飘零博客" />
     <meta name="twitter:image" content="http://medias.liangz.org/wp-content/uploads/2020/05/delphi.png" />
     <script type='application/ld+json'>{"@context":"https:\/\/schema.org","@type":"Person","url":"http:\/\/www.liangz.org\/","sameAs":[],"@id":"#person","name":"Darker"}</script>
     <!-- / Yoast SEO plugin. -->
