@@ -58,7 +58,131 @@
 
 <body class="home blog logged-in nav_fixed m-excerpt-cat m-excerpt-time logged-admin site-layout-2 text-justify-on">
 
-{% include "header.html" %}
+{# header #}
+<header class="header">
+    <div class="container">
+        <h1 class="logo">
+            <a href="{{ url_for('.home') }}" title="{{ header.blogname }} - {{ header.blogdesc }}">
+                <img src="{{ url_for('static', filename='img/LOGO.png') }}"
+                     alt="{{ header.blogname }}-{{ header.blogdesc }}">{{ header.blogname }}
+            </a>
+        </h1>
+        <div class="brand">欢迎光临！<br>若无相欠，怎会相见</div>
+        <ul class="site-nav site-navbar">
+            <li id="menu-item-64"
+                class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-64">
+                <a href="/">网站首页</a>
+            </li>
+            <li id="menu-item-117"
+                class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-117">
+                <a href="{{ url_for('.category', name='study') }}">学无止境</a>
+                <ul class="sub-menu">
+                    <li id="menu-item-557" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-557">
+                        <a href="http://www.liangz.org/sort/study/windows">Windows</a>
+                    </li>
+                    <li id="menu-item-187" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-187">
+                        <a href="http://www.liangz.org/sort/study/wordpress">WordPress</a>
+                    </li>
+                    <li id="menu-item-558" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-558">
+                        <a href="http://www.liangz.org/sort/study/linux">Linux</a>
+                    </li>
+                    <li id="menu-item-120" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-120">
+                        <a href="http://www.liangz.org/sort/study/languages">编程语言</a>
+                    </li>
+                    <li id="menu-item-559" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-559">
+                        <a href="http://www.liangz.org/sort/study/hack">黑客技术</a>
+                    </li>
+                </ul>
+            </li>
+            <li id="menu-item-73"
+                class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-73">
+                <a href="{{ url_for('.category', name='resource') }}">资源分享</a>
+                <ul class="sub-menu">
+                    <li id="menu-item-87" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-87">
+                        <a href="http://www.liangz.org/sort/resource/software">软件分享</a>
+                    </li>
+                    <li id="menu-item-96" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-96">
+                        <a href="http://www.liangz.org/sort/resource/documents">文档分享</a>
+                    </li>
+                </ul>
+            </li>
+            <li id="menu-item-66" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-66">
+                <a href="{{ url_for('.category', name='everthing') }}">谈天说地</a>
+                <ul class="sub-menu">
+                    <li id="menu-item-86" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-86">
+                        <a href="http://www.liangz.org/sort/everthing/essaylog">随笔日志</a>
+                    </li>
+                    <li id="menu-item-70" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-70">
+                        <a href="http://www.liangz.org/memory">备忘录</a>
+                    </li>
+                    <li id="menu-item-693" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-693">
+                        <a href="http://www.liangz.org/about-me">关于我</a>
+                    </li>
+                </ul>
+            </li>
+            <li id="menu-item-312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312">
+                <a href="http://www.liangz.org/opensource">开源项目</a>
+            </li>
+            <li id="menu-item-613" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-613">
+                <a href="http://www.liangz.org/express">微言微语</a>
+            </li>
+            <li id="menu-item-430" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-430">
+                <a target="_blank" href="http://git.liangz.org">代码仓库</a>
+            </li>
+            <li id="menu-item-313" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-313">
+                <a href="http://www.liangz.org/messageboard">留言板</a>
+            </li>
+            <li class="navto-search">
+                <a href="javascript:;" class="search-show active">
+                    <i class="fa fa-search"></i>
+                </a>
+            </li>
+        </ul>
+        <div class="topbar">
+            <ul class="site-nav topmenu">
+                <li id="menu-item-431" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-431">
+                    <a>知识库</a>
+                </li>
+                <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
+                    <a href="{{ url_for('.hot_tags') }}">热门标签</a>
+                </li>
+                <li id="menu-item-59" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59">
+                    <a href="{{ url_for('.friend_link') }}">友情链接</a>
+                </li>
+                <li id="menu-item-61" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61">
+                    <a href="{{ url_for('.changelog') }}">更新记录</a>
+                </li>
+                <li id="menu-item-62" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-62">
+                    <a href="{{ url_for('.about') }}">关于本站</a>
+                </li>
+                <li class="menusns">
+                    <a href="javascript:;">关注我们 <i class="fa fa-angle-down"></i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a class="sns-wechat" href="javascript:;" title="飘零博客"
+                               data-src="http://www.liangz.org/wp-content/uploads/2017/07/qrcode_for_gh_025dd86746bf_258.jpg">飘零博客
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            Hi, User  <a href="http://www.liangz.org/user">进入会员中心</a>
+            <a target="_blank" href="http://www.liangz.org/wp-admin/">后台管理</a>
+        </div>
+        <i class="fa fa-bars m-icon-nav"></i>
+    </div>
+</header>
+
+<div class="site-search">
+    <div class="container">
+        <form method="get" class="site-search-form" action="http://www.liangz.org/">
+            <input class="search-input" name="s" type="text" placeholder="输入关键字" value="">
+            <button class="search-btn" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</div>
 
 <section class="container">
     <div class="content-wrap">
@@ -231,7 +355,210 @@
             </div>
         </div>
 
-        {% include "side.html" %}
+        {# sidebar #}
+        <div class="widget widget_ui_posts">
+            <h3>热门文章</h3>
+            <ul>
+                {% for hot_post in hot_posts %}
+                    <li>
+                        <a target="_blank" href="{{ url_for(".article", id=hot_post.ID) }}">
+                <span class="thumbnail">
+                    <img data-src="{{ hot_post.post_thumbnail }}"
+                         alt="{{ hot_post.post_title }}-{{ header.blogname }}"
+                         src="{{ url_for('static', filename='img/thumbnail.png') }}"
+                         class="thumb">
+                </span>
+                            <span class="text">{{ hot_post.post_title }}</span>
+                            <span class="muted">{{ hot_post.post_date.strftime("%Y-%m-%d") }}</span>
+                            <span class="muted">评论({{ hot_post.comment_count }})</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+        <div class="widget widget_ui_posts">
+            <h3>近期文章</h3>
+            <ul>
+                {% for post in recent_posts %}
+                    <li>
+                        <a target="_blank" href="{{ url_for('.article', id=post.ID) }}">
+                    <span class="thumbnail">
+                        <img data-src="{{ post.post_thumbnail }}"
+                             alt="{{ post.post_title }}-{{ header.blogname }}"
+                             src="{{ url_for('static', filename='img/thumbnail.png') }}"
+                             class="thumb">
+                    </span>
+                            <span class="text">{{ post.post_title }}</span>
+                            <span class="muted">{{ post.post_date.strftime("%Y-%m-%d") }}</span>
+                            <span class="muted">评论({{ post.comment_count }})</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+        <div class="widget widget_ui_posts">
+            <h3>猜你喜欢</h3>
+            <ul>
+                {% for post in guess_likes %}
+                    <li>
+                        <a target="_blank" href="{{ url_for('.article', id=post.ID) }}">
+                    <span class="thumbnail">
+                        <img data-src="{{ post.post_thumbnail }}"
+                             alt="{{ post.post_title }}-{{ header.blogname }}"
+                             src="{{ url_for('static', filename='img/thumbnail.png') }}"
+                             class="thumb">
+                    </span>
+                            <span class="text">{{ post.post_title }}</span>
+                            <span class="muted">{{ post.post_date.strftime("%Y-%m-%d") }}</span>
+                            <span class="muted">评论({{ post.comment_count }})</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+        <div class="widget widget_ui_tags">
+            <h3>热门标签</h3>
+            <div class="items">
+                {% for tag in hot_tags %}
+                    <a href="http://www.liangz.org/tags/{{ tag.slug }}">{{ tag.name }} ({{ tag.count }})</a>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="widget widget_ui_comments">
+            <h3>最新评论</h3>
+            <ul>
+                <li>
+                    <a href="http://www.liangz.org/messageboard/comment-page-1#comment-151" title="留言板上的评论">
+                        <img data-src="https://secure.gravatar.com/avatar/739d96aed118412ef6e20a01af3d54b8?s=100&d=mm"
+                             class="avatar avatar-100" height="50" width="50"><strong>Job</strong> 2个月前
+                        (06-02)说：<br>看到下面的链接了，不用了。
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.liangz.org/messageboard/comment-page-1#comment-150" title="留言板上的评论">
+                        <img data-src="https://secure.gravatar.com/avatar/739d96aed118412ef6e20a01af3d54b8?s=100&d=mm"
+                             class="avatar avatar-100" height="50" width="50"> <strong>Job</strong> 2个月前
+                        (06-02)说：<br>博主，opencv的电子书还在吗？麻烦给我邮箱发一份。谢谢！
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.liangz.org/messageboard/comment-page-1#comment-149" title="留言板上的评论">
+                        <img data-src="https://secure.gravatar.com/avatar/639e9e3b0232709969af744af573a873?s=100&d=mm"
+                             class="avatar avatar-100" height="50" width="50"> <strong>老张</strong> 3个月前
+                        (05-07)说：<br>先赞一个吧，做的挺好的！不常来，每次都有不同。
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.liangz.org/messageboard/comment-page-1#comment-114" title="留言板上的评论">
+                        <img data-src="https://secure.gravatar.com/avatar/40fb135ee95fb0c1c3a5bb2b18945790?s=100&d=mm"
+                             class="avatar avatar-100" height="50" width="50"> <strong>hit</strong>
+                        11个月前 (09-01)说：<br>您好，可以再发一下Python——opencv中文版下载连接吗？
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.liangz.org/331.html/comment-page-1#comment-110" title="知识管理工具-Mybase上的评论">
+                        <img data-src="https://secure.gravatar.com/avatar/7744a667d94a9add1b5de5eaa265af5c?s=100&d=mm"
+                             class="avatar avatar-100" height="50" width="50"> <strong>figa</strong> 1年前
+                        (2019-04-11)说：<br>谢谢 感谢博主分享 ，感觉很好用 。
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.liangz.org/75.html/comment-page-1#comment-108" title="Snipaste--“全球第一多功能截图软件”上的评论">
+                        <img data-src="https://secure.gravatar.com/avatar/8ceaf29cc6b837a0a8fc10a2c5065a19?s=100&d=mm"
+                             class="avatar avatar-100" height="50" width="50"> <strong>Snake</strong>
+                        2年前 (2018-12-05)说：<br>一直在使用这个截图软件
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.liangz.org/444.html/comment-page-1#comment-106" title="使用grub2制作多重启动盘(上)上的评论">
+                        <img data-src="https://secure.gravatar.com/avatar/8ceaf29cc6b837a0a8fc10a2c5065a19?s=100&d=mm"
+                             class="avatar avatar-100" height="50" width="50"> <strong>Snake</strong>
+                        2年前 (2018-12-05)说：<br>照着做能做好，谢谢
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.liangz.org/331.html/comment-page-1#comment-103" title="知识管理工具-Mybase上的评论">
+                        <img data-src="https://secure.gravatar.com/avatar/0dd91156aa7c71aae6ebc64c173564ca?s=100&d=mm"
+                             class="avatar avatar-100" height="50" width="50"> <strong>mm</strong> 2年前
+                        (2018-10-03)说：<br>太好用啦，感謝分享！
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="widget widget_categories">
+            <h3>分类目录</h3>
+            <ul>
+                {% for category in all_categories %}
+                    <li class="cat-item cat-item-{{ category.term_id }}">
+                        <a href="http://www.liangz.org/sort/study/{{ category.slug }}">{{ category.name }}</a> ({{ category.count }})
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+        <div class="widget widget_archive">
+            <h3>文章归档</h3>
+            <ul>
+                <li><a href='http://www.liangz.org/date/2020/07'>2020年七月</a>&nbsp;(2)</li>
+                <li><a href='http://www.liangz.org/date/2020/06'>2020年六月</a>&nbsp;(3)</li>
+                <li><a href='http://www.liangz.org/date/2020/05'>2020年五月</a>&nbsp;(2)</li>
+                <li><a href='http://www.liangz.org/date/2020/04'>2020年四月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2020/03'>2020年三月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2020/02'>2020年二月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2020/01'>2020年一月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2019/12'>2019年十二月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2019/11'>2019年十一月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2019/10'>2019年十月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2019/09'>2019年九月</a>&nbsp;(2)</li>
+                <li><a href='http://www.liangz.org/date/2019/08'>2019年八月</a>&nbsp;(2)</li>
+                <li><a href='http://www.liangz.org/date/2019/07'>2019年七月</a>&nbsp;(3)</li>
+                <li><a href='http://www.liangz.org/date/2019/06'>2019年六月</a>&nbsp;(2)</li>
+                <li><a href='http://www.liangz.org/date/2019/05'>2019年五月</a>&nbsp;(5)</li>
+                <li><a href='http://www.liangz.org/date/2019/04'>2019年四月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2019/03'>2019年三月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2019/02'>2019年二月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2019/01'>2019年一月</a>&nbsp;(3)</li>
+                <li><a href='http://www.liangz.org/date/2018/12'>2018年十二月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2018/11'>2018年十一月</a>&nbsp;(2)</li>
+                <li><a href='http://www.liangz.org/date/2018/10'>2018年十月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2018/08'>2018年八月</a>&nbsp;(2)</li>
+                <li><a href='http://www.liangz.org/date/2018/07'>2018年七月</a>&nbsp;(2)</li>
+                <li><a href='http://www.liangz.org/date/2018/05'>2018年五月</a>&nbsp;(5)</li>
+                <li><a href='http://www.liangz.org/date/2018/04'>2018年四月</a>&nbsp;(3)</li>
+                <li><a href='http://www.liangz.org/date/2018/03'>2018年三月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2018/02'>2018年二月</a>&nbsp;(1)</li>
+                <li><a href='http://www.liangz.org/date/2018/01'>2018年一月</a>&nbsp;(5)</li>
+                <li><a href='http://www.liangz.org/date/2017/12'>2017年十二月</a>&nbsp;(7)</li>
+                <li><a href='http://www.liangz.org/date/2017/11'>2017年十一月</a>&nbsp;(13)</li>
+                <li><a href='http://www.liangz.org/date/2017/10'>2017年十月</a>&nbsp;(3)</li>
+                <li><a href='http://www.liangz.org/date/2017/09'>2017年九月</a>&nbsp;(5)</li>
+                <li><a href='http://www.liangz.org/date/2017/08'>2017年八月</a>&nbsp;(11)</li>
+                <li><a href='http://www.liangz.org/date/2017/07'>2017年七月</a>&nbsp;(9)</li>
+                <li><a href='http://www.liangz.org/date/2017/06'>2017年六月</a>&nbsp;(20)</li>
+            </ul>
+        </div>
+
+
+        <div class="widget widget_ui_statistics">
+            <h3>站点统计</h3>
+            <ul>
+                <li><strong>日志总数：</strong>{{ post_statistics.total_posts }}</li>
+                <li><strong>评论总数：</strong>{{ post_statistics.total_comments }}</li>
+                <li><strong>页面总数：</strong>{{ post_statistics.total_pages }}</li>
+                <li><strong>最后更新：</strong>{{ post_statistics.latest.strftime("%Y-%m-%d") }}</li>
+            </ul>
+        </div>
 
     </div>
 </section>
@@ -242,7 +569,150 @@
     </div>
 </div>
 
-{% include "footer.html" %}
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2017-2020
+            <a href="{{ header.home }}">飘零博客</a> &nbsp;
+            保留所有权利.&nbsp&nbsp&nbsp
+            <a href="http://www.liangz.org/sitemap_index.xml">网站地图</a>&nbsp&nbsp
+            <a href="mailto:Darker@liangz.org" target="_blank">联系我</a><br/><br/>
+            <a href="http://www.miitbeian.gov.cn/">豫ICP备17004059号-2</a>&nbsp&nbsp&nbsp
+            <a href="http://webscan.360.cn/index/checkwebsite/url/www.liangz.org"
+               name="8a944173b40e4ac482e6322341f82110">360网站安全检测平台
+            </a>
+            <br/><br/>
+            <span id="sitetime"></span>
+        </p>
+        <br/>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script type="text/javascript">
+            function siteTime() {
+                window.setTimeout("siteTime()", 1000);
+                var seconds = 1000;
+                var minutes = seconds * 60;
+                var hours = minutes * 60;
+                var days = hours * 24;
+                var years = days * 365;
+                var today = new Date();
+                var todayYear = today.getFullYear();
+                var todayMonth = today.getMonth();
+                var todayDate = today.getDate();
+                var todayHour = today.getHours();
+                var todayMinute = today.getMinutes();
+                var todaySecond = today.getSeconds();
+
+                /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+                year - 作为date对象的年份，为4位年份值
+                month - 0-11之间的整数，做为date对象的月份    特别注意
+                day - 1-31之间的整数，做为date对象的天数
+                hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+                minutes - 0-59之间的整数，做为date对象的分钟数
+                seconds - 0-59之间的整数，做为date对象的秒数
+                microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+                var t1 = Date.UTC(2017, 1, 14, 0, 0, 0);<!--注意：月份是0-11,所以需要把建站月份减一-->
+                var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                var diff = t2 - t1;
+
+                var diffYears = Math.floor(diff / years);
+                var diffDays = Math.floor((diff / days) - diffYears * 365);
+                var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                if (String(diffHours).length === 1) {
+                    diffHours = "0" + diffHours;
+                }
+                var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+                if (String(diffMinutes).length === 1) {
+                    diffMinutes = "0" + diffMinutes;
+                }
+                var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+                if (String(diffSeconds).length === 1) {
+                    diffSeconds = "0" + diffSeconds;
+                }
+                document.getElementById("sitetime").innerHTML = "本站勉强运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+
+                var Days = Math.floor(diff / days);
+                var Hours = Math.floor((diff -  Days * days) / hours);
+                if (String(Hours).length === 1) {
+                    Hours = "0" + Hours;
+                }
+                var Minutes = Math.floor((diff -  Days * days - Hours * hours) / minutes);
+                if (String(Minutes).length === 1) {
+                    Minutes = "0" + Minutes;
+                }
+                var Seconds = Math.floor((diff -  Days * days - Hours * hours - Minutes * minutes) / seconds);
+                if (String(Seconds).length === 1) {
+                    Seconds = "0" + Seconds;
+                }
+                document.getElementById("timeDate").innerHTML = "本站始于2017年2月14日，勉强运行 " + Days + " 天 ";
+                document.getElementById("times").innerHTML = Hours + " 小时 " + Minutes + " 分 " + Seconds + " 秒";
+            }
+            siteTime();
+        </script>
+    </div>
+</footer>
+
+<div class="rollbar rollbar-rb">
+    <ul>
+        <li>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1930812245&site=qq&menu=yes">
+                <i class="fa fa-qq"></i>
+                <span>QQ咨询</span>
+            </a>
+            <h6>QQ咨询<i></i></h6>
+        </li>
+        <li class="rollbar-totop">
+            <a href="javascript:(jsui.scrollTo());">
+                <i class="fa fa-angle-up"></i>
+                <span>回顶</span>
+            </a>
+            <h6>回顶部<i></i></h6>
+        </li>
+    </ul>
+</div>
+
+<script>
+    window.jsui = {
+        www: 'http://www.liangz.org',
+        uri: '{{ url_for('static', filename="js/") }}',
+        ver: '5.2',
+        roll: ["1", "2"],
+        ajaxpager: '0',
+        url_rp: 'http://www.liangz.org/resetpwd'
+    };
+</script>
+
+<!-- 复制内容弹窗版权提醒 -->
+<script type="text/javascript">
+    document.body.oncopy = function () {
+        alert("复制成功！撰文不易，转载请务必保留原文链接，谢谢合作！");
+    }
+</script>
+
+<script type="text/javascript">
+    len = $(".widget_ui_tags .items a").length - 1;
+    $(".widget_ui_tags .items a").each(function (i) {
+        var let = new Array(
+            '27ea80', '3366FF', 'ff5473', 'df27ea', '31ac76', 'ea4563',
+            '31a6a0', '8e7daa', '4fad7b', 'f99f13', 'f85200', '666666');
+        var random1 = Math.floor(Math.random() * 12) + 0;
+        var num = Math.floor(Math.random() * 5 + 12);
+        $(this).attr('style', 'background:#' + let[random1] + '; opacity: 0.6;' + '');
+        if ($(this).next().length > 0) {
+            last = $(this).next().position().left
+        }
+    });
+</script>
+
+<!-- 评论框礼花绽放效果-->
+<script src="{{ url_for('static', filename='js/activate-power-mode.js') }}"></script>
+<script>
+    POWERMODE.colorful = true; // ture 为启用礼花特效
+    POWERMODE.shake = false; // false 为禁用震动特效
+    document.body.addEventListener('input', POWERMODE);
+</script>
+
+<script type='text/javascript' src="{{ url_for('static', filename='js/libs/bootstrap.min.js') }}"></script>
+<script type='text/javascript' src="{{ url_for('static', filename='js/loader.js') }}"></script>
+<script type='text/javascript' src="{{ url_for('static', filename='js/wp-embed.min.js') }}"></script>
 
 </body>
 
